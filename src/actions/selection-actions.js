@@ -34,6 +34,15 @@ export const addSelection = (contestant, week) => {
   })
 }
 
+export const DELETE_SELECTION = 'DELETE_SELECTION';
+export const deleteSelection = (contestant, week) => {
+  return ({
+    type: DELETE_SELECTION,
+    contestant,
+    week
+  })
+}
+
 export const getContestants = () => (dispatch) => {
   dispatch(fetchContestantsRequest());
   fetch(`${API_BASE_URL}/contestants`)
