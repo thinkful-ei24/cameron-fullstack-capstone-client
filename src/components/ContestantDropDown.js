@@ -22,7 +22,7 @@ export class ContestantList extends React.Component{
 }
 
 const mapStateToProps = (state, props) => ({
-    contestants: state.selectionReducer[`week${props.week-1}`]
+    contestants: state.selectionReducer[`week${props.week-1}`].choices
 });
 
 export default connect(mapStateToProps)(ContestantList);

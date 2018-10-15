@@ -21,7 +21,7 @@ export class Selections extends React.Component{
 }
 
 const mapStateToProps = (state, props) => ({
-  contestants: state.selectionReducer[`week${props.week}`]
+  contestants: state.selectionReducer[`week${props.week}`].selection
 })
 
 export default connect(mapStateToProps)(Selections);
