@@ -22,7 +22,8 @@ export class ContestantList extends React.Component{
 }
 
 const mapStateToProps = (state, props) => ({
-    contestants: state.selectionReducer[`week${props.week-1}`].choices
+    contestants: state.selectionReducer[`week${props.week-1}`]
+      .filter(person => !state.selectionReducer[`week${props.week}`].includes(person))
 });
 
 export default connect(mapStateToProps)(ContestantList);
