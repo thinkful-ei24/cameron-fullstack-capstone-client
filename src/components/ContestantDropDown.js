@@ -1,11 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import{getContestants} from '../actions/selection-actions';
+import {addSelection} from '../actions/selection-actions';
 
 export class ContestantList extends React.Component{
-  componentDidMount(){
-    this.props.dispatch(getContestants());
-  }
 
   renderReact(){
     return this.props.contestants.map((contestant, index) => (
@@ -15,7 +12,8 @@ export class ContestantList extends React.Component{
 
   render(){
     return (
-      <select>
+      <select onChange={e => this.props.dispatch(
+        addSelection(e.target.value, this.props.week))}>
         <option value=''>Choose:</option>
         {this.renderReact()}
       </select>
@@ -24,7 +22,7 @@ export class ContestantList extends React.Component{
 }
 
 const mapStateToProps = (state, props) => ({
-    contestants: state.selectionReducer[`week${props.week}`]
+    contestants: state.selectionReducer[`week${props.week-1}`]
 });
 
 export default connect(mapStateToProps)(ContestantList);

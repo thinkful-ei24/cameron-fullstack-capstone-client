@@ -25,6 +25,15 @@ export const fetchContestantsError = (error) => {
   })
 }
 
+export const ADD_SELECTION = 'ADD_SELECTION';
+export const addSelection = (contestant, week) => {
+  return ({
+    type: ADD_SELECTION,
+    contestant,
+    week
+  })
+}
+
 export const getContestants = () => (dispatch) => {
   dispatch(fetchContestantsRequest());
   fetch(`${API_BASE_URL}/contestants`)

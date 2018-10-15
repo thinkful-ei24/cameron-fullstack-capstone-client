@@ -5,7 +5,8 @@ export default function WeekSelection(props){
 
   return (
     <div>
-      <ContestantDropDown week={0} />
+      <h2>{`Week ${props.week}`}</h2>
+      <ContestantDropDown week={props.week} />
     </div>
   )
 }
