@@ -16,14 +16,15 @@ export class ContestantList extends React.Component{
   render(){
     return (
       <select>
+        <option value=''>Choose:</option>
         {this.renderReact()}
       </select>
     )
   }
 }
 
-const mapStateToProps = state => ({
-    contestants: state.selectionReducer.contestants
+const mapStateToProps = (state, props) => ({
+    contestants: state.selectionReducer[`week${props.week}`]
 });
 
 export default connect(mapStateToProps)(ContestantList);

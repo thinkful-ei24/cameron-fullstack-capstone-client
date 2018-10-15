@@ -5,7 +5,7 @@ import {FETCH_CONTESTANTS_REQUEST,
 const initialState = {
   loading: false,
   error: null,
-  contestants: []
+  week0: []
 }  
 
 export default function(state = initialState, action){
@@ -15,7 +15,7 @@ export default function(state = initialState, action){
     case FETCH_CONTESTANTS_SUCCESS:
       return Object.assign({}, state,{
         loading: false,
-        contestants: action.contestants
+        week0: action.contestants
       });
     case FETCH_CONTESTANTS_ERROR:
       return Object.assign({}, state, {
