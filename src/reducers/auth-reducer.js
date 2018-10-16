@@ -7,8 +7,6 @@ import {SET_AUTH_TOKEN,
 const initialState = {
   authToken: null,
   currentUser: null,
-  username: null,
-  password: null,
   loading: false,
   error: null  
 }
