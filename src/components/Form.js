@@ -3,6 +3,13 @@ import {connect} from 'react-redux';
 import {login} from '../actions/auth-actions';
 
 export class LoginForm extends React.Component{
+  componentDidMount(){
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    this.customValidity(username);
+    this.customValidity(password);
+  }
+
   handleSubmit(event){
     event.preventDefault();
     let password = event.target['password'].value;
@@ -29,14 +36,12 @@ export class LoginForm extends React.Component{
   render(){
 
     return(
-      <form id='loginForm' onSubmit={(e) => this.handleSubmit(e) }>
+      <form className='form' onSubmit={(e) => this.handleSubmit(e) }>
         {this.errorDisplay()}
         <label htmlFor='username'>Username:</label>
-        <input type='text' name='username' id='username' 
-          onChange={e => this.customValidity(e.target)}/>
+        <input type='text' name='username' id='username'/>
         <label htmlFor='password'>Password:</label>
-        <input type='text' name='password' id='password'
-           onChange={e => this.customValidity(e.target)}/>
+        <input type='text' name='password' id='password'/>
         <button type='submit'>Login</button>
       </form>
     )
