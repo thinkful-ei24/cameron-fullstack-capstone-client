@@ -20,15 +20,15 @@ const initialState = {
   week10: []
 } ; 
 
-const fixDelete = (state, week, contestant)=>{
+const fixDelete = (state, contestant, week)=>{
   let newObj = {}
   for (let i=week; i<=10; i++){
-    Object.assign(newObj, {
-      [`week${i}`]: state[`week${1}`].filter(person => person!==contestant)
-    });
+    let weekName = `week${i}`
+    newObj[weekName] = state[`week${i}`].filter(person => person!==contestant);
   }
-  return Object.assign(newObj, {[`week${week-1}`]: [...state[`week${week-1}`], contestant]});
-}
+  console.log(newObj);
+  return newObj;
+}  
 
 export default function(state = initialState, action){
   switch(action.type){
