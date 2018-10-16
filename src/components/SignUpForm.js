@@ -14,16 +14,21 @@ export class LoginForm extends React.Component{
     event.preventDefault();
     let password = event.target['password'].value;
     let username = event.target['username'].value;
-    this.props.dispatch(login(username, password));
+    let name = event.target['name'].value;
+    this.props.dispatch(signup(name,username, password));
     event.target['password'].value='';
     event.target['username'].value='';
+    event.target['name'].value='';
 
   }
   customValidity(event){
+    console.log(event.value);
     if (!event.value){
       event.setCustomValidity('Field is required');
     } else if (event.value.trim() === ''){
       event.setCustomValidity('Field cannot be empty string')
+    } else{
+      event.setCustomValidity('');
     }
   }
   errorDisplay(){
@@ -38,10 +43,14 @@ export class LoginForm extends React.Component{
     return(
       <form className='form' onSubmit={(e) => this.handleSubmit(e) }>
         {this.errorDisplay()}
+        <label htmlFor='name'>Name:</label>
+        <input type='text' name='name' id='name' />
         <label htmlFor='username'>Username:</label>
-        <input type='text' name='username' id='username'/>
+        <input type='text' name='username' id='username'
+          onChange={e => this.customValidity(e.target)} />
         <label htmlFor='password'>Password:</label>
-        <input type='text' name='password' id='password'/>
+        <input type='text' name='password' id='password'
+          onChange={e => this.customValidity(e.target)}/>
         <button type='submit'>Login</button>
       </form>
     )
