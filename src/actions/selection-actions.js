@@ -45,7 +45,7 @@ export const deleteSelection = (contestant, week) => {
 
 export const getContestants = () => (dispatch) => {
   dispatch(fetchContestantsRequest());
-  fetch(`${API_BASE_URL}/contestants`)
+  fetch(`${API_BASE_URL}/api/contestants`)
   .then(res => normalizeResponseErrors(res))
   .then(res => res.json())
   .then(res => dispatch(fetchContestantsSuccess(res)))

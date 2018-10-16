@@ -26,7 +26,6 @@ const fixDelete = (state, contestant, week)=>{
     let weekName = `week${i}`
     newObj[weekName] = state[`week${i}`].filter(person => person!==contestant);
   }
-  console.log(newObj);
   return newObj;
 }  
 
