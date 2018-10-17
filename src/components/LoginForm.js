@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {login} from '../actions/auth-actions';
+import {Redirect} from 'react-router-dom';
 
 export class LoginForm extends React.Component{
   componentDidMount(){
@@ -37,7 +38,9 @@ export class LoginForm extends React.Component{
     }
   }
   render(){
-
+    if(this.props.loggedIn){
+      return <Redirect to='/selection' />;
+    }
     return(
       <form className='form' onSubmit={(e) => this.handleSubmit(e) }>
         {this.errorDisplay()}
@@ -55,7 +58,8 @@ export class LoginForm extends React.Component{
 }
 
 const mapStateToProps = (state) =>({
-  error: state.authReducer.error
+  error: state.authReducer.error,
+  loggedIn: state.authReducer.currentUser !== null
 })
 
 export default connect(mapStateToProps)(LoginForm);

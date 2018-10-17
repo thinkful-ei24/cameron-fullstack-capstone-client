@@ -24,4 +24,5 @@ export class WeekHolder extends React.Component{
   }
 }
 
+
 export default connect()(WeekHolder);

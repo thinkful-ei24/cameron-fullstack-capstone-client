@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Route, withRouter} from 'react-router-dom';
 
 import WeekHolder from './WeekHolder';
 import LoginForm from './LoginForm';
@@ -10,9 +11,13 @@ export class App extends React.Component{
 
   render(){
     return(
-      <SignUpForm />
+      <div className='app'>
+        <Route exact path='/' component={SignUpForm} />
+        <Route exact path='/login' component={LoginForm} />
+        <Route exact path='/selection' component={WeekHolder} />
+      </div>
     )
   }
 }
 
-export default connect()(App);
+export default withRouter(connect()(App));
