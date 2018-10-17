@@ -43,9 +43,13 @@ export const deleteSelection = (contestant, week) => {
   })
 }
 
-export const getContestants = () => (dispatch) => {
+export const getContestants = (jwt) => (dispatch) => {
   dispatch(fetchContestantsRequest());
-  fetch(`${API_BASE_URL}/api/contestants`)
+  fetch(`${API_BASE_URL}/api/contestants`, {
+    headers: {
+      'Authorization': `Bearer ${jwt}`
+    }
+  })
   .then(res => normalizeResponseErrors(res))
   .then(res => res.json())
   .then(res => dispatch(fetchContestantsSuccess(res)))

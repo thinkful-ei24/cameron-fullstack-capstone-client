@@ -5,7 +5,7 @@ import {getContestants} from '../actions/selection-actions';
 
 export class WeekHolder extends React.Component{
   componentDidMount(){
-    this.props.dispatch(getContestants());
+    this.props.dispatch(getContestants(this.props.jwt));
   }
   renderReact(){
     let weeks=[];
@@ -23,6 +23,8 @@ export class WeekHolder extends React.Component{
     )
   }
 }
+const mapStateToProps = state => ({
+  jwt: state.authReducer.authToken
+});
 
-
-export default connect()(WeekHolder);
+export default connect(mapStateToProps)(WeekHolder);
