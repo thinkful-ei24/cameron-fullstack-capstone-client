@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {signup} from '../actions/signup-actions';
 import {login} from '../actions/auth-actions';
 
 export class LoginForm extends React.Component{
@@ -14,20 +15,24 @@ export class LoginForm extends React.Component{
     event.preventDefault();
     let password = event.target['password'].value;
     let username = event.target['username'].value;
-    let name = event.target['name'].value;
-    this.props.dispatch(signup(name,username, password));
+    this.props.dispatch(signup(username, password))
     event.target['password'].value='';
     event.target['username'].value='';
-    event.target['name'].value='';
 
   }
   customValidity(event){
     console.log(event.value);
     if (!event.value){
       event.setCustomValidity('Field is required');
-    } else if (event.value.trim() === ''){
-      event.setCustomValidity('Field cannot be empty string')
-    } else{
+    } else if (event.value.trim() !== event.value){
+      event.setCustomValidity('Field cannot start or end with whitespace')
+    } else if (event.id === 'password' && event.value.length<8){
+      event.setCustomValidity('Password cannot be less than 8 characters')
+    } else if (event.id === 'password' && event.value.length>72){
+      event.setCustomValidity('Password cannot be more than 72 characters')
+    } else if (event.id === 'username' && event.value.length<1){
+      event.setCustomValidity('Username cannot be less than 2 characters')
+    }else{
       event.setCustomValidity('');
     }
   }
@@ -43,8 +48,6 @@ export class LoginForm extends React.Component{
     return(
       <form className='form' onSubmit={(e) => this.handleSubmit(e) }>
         {this.errorDisplay()}
-        <label htmlFor='name'>Name:</label>
-        <input type='text' name='name' id='name' />
         <label htmlFor='username'>Username:</label>
         <input type='text' name='username' id='username'
           onChange={e => this.customValidity(e.target)} />

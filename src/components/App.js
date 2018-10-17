@@ -2,16 +2,15 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import WeekHolder from './WeekHolder';
-import Form from './Form';
-
-import {login} from '../actions/auth-actions';
+import LoginForm from './LoginForm';
+import SignUpForm from './SignUpForm';
 
 
 export class App extends React.Component{
 
   render(){
     return(
-      <Form />
+      <SignUpForm />
     )
   }
 }

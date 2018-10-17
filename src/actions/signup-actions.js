@@ -1,25 +1,29 @@
-export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
-export const signupRequest = () => ({
-  type: SIGNUP_REQUEST
-});
+import {authRequest, authError, login} from './auth-actions';
 
-export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
-export const signupSuccess = () => ({
-  type: SIGNUP_SUCCESS
-});
+import { API_BASE_URL } from '../config';
+import { normalizeResponseErrors } from './utils';
 
-export const SIGNUP_ERROR = 'SIGNUP_ERROR';
-export const signupError= (error) => ({
-  type: SIGNUP_ERROR,
-  error
-});
-
-export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
-export const signupRequest = () => ({
-  type: SIGNUP_REQUEST
-});
-
-
-export const signup=(name, username, password) => dispatch => {
-
+export const signup=(username, password) => dispatch => {
+  dispatch(authRequest());
+  fetch(`${API_BASE_URL}/api/users`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username,
+      password
+    })
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
+  .then(() => dispatch(login(username, password)))
+  .catch(err => {
+    const {code} = err;
+    err.message = 
+      code === 422
+        ? err.message
+        : 'Unable to sign up. Please try again';
+    dispatch(authError(err))    
+  })  
 }
