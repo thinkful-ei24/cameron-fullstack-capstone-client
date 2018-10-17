@@ -50,7 +50,7 @@ export class LoginForm extends React.Component{
       return <Redirect to='/selection' />;
     }
     return(
-      <form className='form' onSubmit={(e) => this.handleSubmit(e) }>
+      <form className='signup-form' onSubmit={(e) => this.handleSubmit(e) }>
         {this.errorDisplay()}
         <label htmlFor='username'>Username:</label>
         <input type='text' name='username' id='username'
