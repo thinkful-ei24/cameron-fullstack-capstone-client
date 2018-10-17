@@ -2,11 +2,14 @@ import {FETCH_CONTESTANTS_REQUEST,
   FETCH_CONTESTANTS_SUCCESS,
   FETCH_CONTESTANTS_ERROR,
   ADD_SELECTION,
-  DELETE_SELECTION} from '../actions/selection-actions';
+  DELETE_SELECTION,
+  SUBMIT_GUESSES_SUCCESS,
+  SUBMIT_GUESSES_ERROR} from '../actions/selection-actions';
 
 const initialState = {
   loading: false,
   error: null,
+  status: null,
   week0: [],
   week1: [],
   week2: [],
@@ -55,6 +58,16 @@ export default function(state = initialState, action){
     case DELETE_SELECTION:
       const newObj = fixDelete(state, action.contestant, action.week);
       return Object.assign({}, state, newObj);
+    case SUBMIT_GUESSES_SUCCESS:
+      return Object.assign({}, state, {
+        loading: false,
+        status: action.status
+      });
+    case SUBMIT_GUESSES_ERROR:
+      return Object.assign({}, state, {
+        loading: false,
+        error: action.error
+      });    
     default:
       return state  
   }

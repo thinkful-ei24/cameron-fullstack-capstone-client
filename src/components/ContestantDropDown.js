@@ -21,9 +21,14 @@ export class ContestantList extends React.Component{
   }
 }
 
-const mapStateToProps = (state, props) => ({
-    contestants: state.selectionReducer[`week${props.week-1}`]
-      .filter(person => !state.selectionReducer[`week${props.week}`].includes(person))
-});
+const mapStateToProps = (state, props) => {
+  const currentWeek = `week${props.week}`
+  const previousWeek = `week${props.week-1}`
+  return ({
+    contestants: state.selectionReducer[previousWeek]
+      .filter(person => !state.selectionReducer[currentWeek].includes(person))
+  });
+}
+  
 
 export default connect(mapStateToProps)(ContestantList);

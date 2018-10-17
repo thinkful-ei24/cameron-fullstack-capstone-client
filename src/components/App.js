@@ -54,4 +54,4 @@ const mapStateToProps = state => ({
   loggedIn: state.authReducer.currentUser !== null
 })
 
-export default withRouter(connect()(App));
+export default withRouter(connect(mapStateToProps)(App));

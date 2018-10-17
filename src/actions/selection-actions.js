@@ -43,6 +43,21 @@ export const deleteSelection = (contestant, week) => {
   })
 }
 
+export const SUBMIT_GUESSES_SUCCESS = 'SUBMIT_GUESSES_SUCCESS';
+export const submitGuessesSuccess = (status) => {
+  return ({
+    type: SUBMIT_GUESSES_SUCCESS,
+    status
+  })
+}
+export const SUBMIT_GUESSES_ERROR = 'SUBMIT_GUESSES_ERROR';
+export const submitGuessesError = (error) => {
+  return ({
+    type: SUBMIT_GUESSES_ERROR,
+    error
+  });
+}
+
 export const getContestants = (jwt) => (dispatch) => {
   dispatch(fetchContestantsRequest());
   fetch(`${API_BASE_URL}/api/contestants`, {
@@ -54,4 +69,19 @@ export const getContestants = (jwt) => (dispatch) => {
   .then(res => res.json())
   .then(res => dispatch(fetchContestantsSuccess(res)))
   .catch(err => dispatch(fetchContestantsError(err)));
+}
+
+export const submitGuesses = (jwt, guesses) => (dispatch, getState) => {
+  dispatch(fetchContestantsRequest());
+  fetch(`${API_BASE_URL}/api/guesses`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${jwt}`
+    },
+    body: JSON.stringify(guesses)
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
+  .then(res => dispatch(submitGuessesSuccess('results')))
+  .catch(err => dispatch(submitGuessesError(err)));
 }

@@ -1,21 +1,28 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import WeekSelection from './WeekSelection';
-import {getContestants} from '../actions/selection-actions';
+import {getContestants, submitGuesses} from '../actions/selection-actions';
 
 export class WeekHolder extends React.Component{
   componentDidMount(){
     this.props.dispatch(getContestants(this.props.jwt));
   }
   handleSubmit(e){
-    e.preventDefault();
+    const guesses = {
+      week1: this.props.week1,
+      week2: this.props.week2,
+      week3: this.props.week3,
+      week4: this.props.week4,
+      week5: this.props.week5,
+      week6: this.props.week6,
+      week7: this.props.week7,
+      week8: this.props.week8,
+      week9: this.props.week9,
+      week10: this.props.week10,
+    }
+    this.props.dispatch(submitGuesses(this.props.jwt, guesses));
   }
 
-  onKeyPress(e){
-    if(e.which===13){
-      e.preventDefault();
-    }
-  }
   remainingContestants = [21, 18, 15, 12, 9, 6, 4, 3, 2, 1];
   conditionsMet(){
     for(let i=1; i<=10; i++){
@@ -32,16 +39,22 @@ export class WeekHolder extends React.Component{
     }
     return weeks;
   }
+  errorDisplay(){
+    if(this.props.error){
+      return(
+        <div className='errorDisplay'>{this.props.error.message}</div>
+      )
+    }
+  }
 
 
   render(){
     return(
-      <form className='selection-form'
-       onSubmit={e => this.handleSubmit(e)}
-       onKeyPress={e => this.onKeyPress(e)}>
+      <div>
+        {this.errorDisplay()}
         {this.renderReact()}
-        <button type='submit' disabled={!this.conditionsMet()}>Submit</button>
-      </form>
+        <button disabled={!this.conditionsMet()} onClick={(e) => this.handleSubmit(e)}>Submit</button>
+      </div>
     )
   }
 }
@@ -56,7 +69,8 @@ const mapStateToProps = state => ({
   week7: state.selectionReducer.week7,
   week8: state.selectionReducer.week8,
   week9: state.selectionReducer.week9,
-  week10: state.selectionReducer.week10
+  week10: state.selectionReducer.week10,
+  error: state.selectionReducer.error
 });
 
 export default connect(mapStateToProps)(WeekHolder);

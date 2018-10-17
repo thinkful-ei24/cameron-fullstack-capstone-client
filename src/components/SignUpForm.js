@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {signup} from '../actions/signup-actions';
-import {login} from '../actions/auth-actions';
 import {Redirect} from 'react-router-dom';
 
 export class LoginForm extends React.Component{
@@ -58,7 +57,7 @@ export class LoginForm extends React.Component{
         <label htmlFor='password'>Password:</label>
         <input type='text' name='password' id='password'
           onChange={e => this.customValidity(e.target)}/>
-        <button type='submit'>Login</button>
+        <button type='submit'>Sign Up</button>
       </form>
     )
   }
