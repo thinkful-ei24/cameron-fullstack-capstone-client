@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import SingleSelection from './SingleSeleciton';
 
 export class Selections extends React.Component{
-  remainingContestants = [21, 18, 15, 12, 9, 6, 4, 3, 2, 1];
   renderReact(){
     let selectionArr = this.props.contestants.map((contestant, index) => (
         <SingleSelection key={index} contestant={contestant} week={this.props.week}/>
