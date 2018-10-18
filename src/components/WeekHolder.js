@@ -81,7 +81,7 @@ const mapStateToProps = state => ({
   week9: state.selectionReducer.week9,
   week10: state.selectionReducer.week10,
   error: state.selectionReducer.error,
-  status: state.authReducer.status
+  status: state.selectionReducer.status
 });
 
 export default requiresLogin()(connect(mapStateToProps)(WeekHolder));

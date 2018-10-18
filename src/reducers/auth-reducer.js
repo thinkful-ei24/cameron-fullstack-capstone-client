@@ -4,14 +4,9 @@ import {SET_AUTH_TOKEN,
   AUTH_REQUEST,
   AUTH_ERROR} from '../actions/auth-actions';
 
-  import {
-    SUBMIT_GUESSES_SUCCESS_STATUS
-  } from '../actions/selection-actions';
-
 const initialState = {
   authToken: null,
   currentUser: null,
-  status: null,
   loading: false,
   error: null  
 }
@@ -41,10 +36,6 @@ export default function(state = initialState, action){
       return Object.assign({}, state, {
       loading: false,
       error: action.error
-      });
-    case SUBMIT_GUESSES_SUCCESS_STATUS:
-      return Object.assign({}, state, {
-        status: action.status
       });
     default:
       return state;  

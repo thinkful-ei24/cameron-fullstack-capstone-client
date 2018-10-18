@@ -1,7 +1,6 @@
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 
-
 export const FETCH_CONTESTANTS_REQUEST = 'FETCH_CONTESTANTS_REQUEST';
 export const fetchContestantsRequest = () => {
   return ({
@@ -20,7 +19,7 @@ export const fetchContestantsSuccess = (contestants) => {
 export const FETCH_CONTESTANTS_ERROR = 'FETCH_CONTESTANTS_ERROR';
 export const fetchContestantsError = (error) => {
   return ({
-    type: FETCH_CONTESTANTS_SUCCESS,
+    type: FETCH_CONTESTANTS_ERROR,
     error
   })
 }
@@ -43,18 +42,11 @@ export const deleteSelection = (contestant, week) => {
   })
 }
 
-export const SUBMIT_GUESSES_SUCCESS_STATUS = 'SUBMIT_GUESSES_SUCCESS_STATUS';
-export const submitGuessesSuccessStatus = (status) => {
-  return ({
-    type: SUBMIT_GUESSES_SUCCESS_STATUS,
-    status
-  });
-}
-
 export const SUBMIT_GUESSES_SUCCESS = 'SUBMIT_GUESSES_SUCCESS';
-export const submitGuessesSuccess = () => {
+export const submitGuessesSuccess = (status) => {
   return ({
-    type: SUBMIT_GUESSES_SUCCESS
+    type: SUBMIT_GUESSES_SUCCESS,
+    status
   });
 }
 

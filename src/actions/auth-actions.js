@@ -21,10 +21,14 @@ export const authRequest = () => ({
 });
 
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
-export const authSuccess = (currentUser, status) => ({
+export const authSuccess = currentUser => ({
   type: AUTH_SUCCESS,
-  currentUser,
-  status
+  currentUser
+});
+
+export const GENERAL_SUCCESS = 'GENERAL_SUCCESS';
+export const generalSuccess = () => ({
+  type: GENERAL_SUCCESS
 });
 
 export const AUTH_ERROR = 'AUTH_ERROR';
@@ -38,7 +42,7 @@ export const authError = error => ({
 const storeAuthInfo = (authToken, dispatch) => {
   const decodedToken = jwtDecode(authToken);
   dispatch(setAuthToken(authToken));
-  dispatch(authSuccess(decodedToken.user.username, decodedToken.user.status));
+  dispatch(authSuccess(decodedToken.user));
   saveAuthToken(authToken);
 };
 

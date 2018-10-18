@@ -6,6 +6,8 @@ import {FETCH_CONTESTANTS_REQUEST,
   SUBMIT_GUESSES_SUCCESS,
   SUBMIT_GUESSES_ERROR} from '../actions/selection-actions';
 
+import {FETCH_RESULTS_SUCCESS} from '../actions/results-actions'; 
+
 const initialState = {
   loading: false,
   error: null,
@@ -19,8 +21,11 @@ const initialState = {
   week7: [],
   week8: [],
   week9: [],
-  week10: []
-} ; 
+  week10: [], 
+  status: null,
+  results: {week1:{}, week2:{}, week3:{}, week4:{}, week5:{},
+    week6:{}, week7:{}, week8:{}, week9:{}, week10:{}}
+}; 
 
 const fixDelete = (state, contestant, week)=>{
   let newObj = {}
@@ -59,13 +64,19 @@ export default function(state = initialState, action){
       return Object.assign({}, state, newObj);
     case SUBMIT_GUESSES_SUCCESS:
       return Object.assign({}, state, {
-        loading: false
+        loading: false,
+        status: action.status
       });
     case SUBMIT_GUESSES_ERROR:
       return Object.assign({}, state, {
         loading: false,
         error: action.error
-      });    
+      });
+    case FETCH_RESULTS_SUCCESS:
+      return Object.assign({}, state, {
+        results: action.data, 
+        loading: false
+      });      
     default:
       return state  
   }
