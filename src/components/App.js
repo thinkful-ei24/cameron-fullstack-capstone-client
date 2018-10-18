@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Redirect } from 'react-router-dom';
 
 import WeekHolder from './WeekHolder';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
+import ResultsHolder from './ResultsHolder';
+import SubmissionConfrim from './SubmissionConfirm';
 import {refreshAuthToken} from '../actions/auth-actions';
 
 
@@ -44,6 +46,8 @@ export class App extends React.Component {
         <Route exact path='/' component={SignUpForm} />
         <Route exact path='/login' component={LoginForm} />
         <Route exact path='/selection' component={WeekHolder} />
+        <Route exact path='/results' component={ResultsHolder} />
+        <Route exact path='/submissionconfirmed' component={SubmissionConfrim} />
       </div>
     )
   }

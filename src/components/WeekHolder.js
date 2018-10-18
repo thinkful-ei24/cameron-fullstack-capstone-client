@@ -1,11 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import WeekSelection from './WeekSelection';
 import {getContestants, submitGuesses} from '../actions/selection-actions';
+import requiresLogin from './requires-login';
 
 export class WeekHolder extends React.Component{
   componentDidMount(){
     this.props.dispatch(getContestants(this.props.jwt));
+  }
+
+  componentDidUpdate(prevProps){
+    if(prevProps === 'choosing' && this.props.status === 'results'){
+      return <Redirect to='/submissionconfirmed' />
+    } else if(this.props.status === 'results'){
+      return <Redirect to='/results' />
+    }
   }
   handleSubmit(e){
     const guesses = {
@@ -73,4 +83,4 @@ const mapStateToProps = state => ({
   error: state.selectionReducer.error
 });
 
-export default connect(mapStateToProps)(WeekHolder);
+export default requiresLogin()(connect(mapStateToProps)(WeekHolder));
