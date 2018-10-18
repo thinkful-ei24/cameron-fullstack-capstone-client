@@ -74,7 +74,8 @@ export default function(state = initialState, action){
       });
     case FETCH_RESULTS_SUCCESS:
       return Object.assign({}, state, {
-        results: action.data, 
+        results: action.data.feedback,
+        status: action.data.status, 
         loading: false
       });      
     default:

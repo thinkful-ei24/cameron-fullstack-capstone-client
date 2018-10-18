@@ -9,10 +9,11 @@ export const fetchContestantsRequest = () => {
 };
 
 export const FETCH_CONTESTANTS_SUCCESS = 'FETCH_CONTESTANTS_SUCCESS';
-export const fetchContestantsSuccess = (contestants) => {
+export const fetchContestantsSuccess = (contestants, status) => {
   return ({
     type: FETCH_CONTESTANTS_SUCCESS,
-    contestants
+    contestants,
+    status
   })
 }
 
@@ -67,7 +68,7 @@ export const getContestants = (jwt) => (dispatch) => {
   })
   .then(res => normalizeResponseErrors(res))
   .then(res => res.json())
-  .then(res => dispatch(fetchContestantsSuccess(res)))
+  .then(res => dispatch(fetchContestantsSuccess(res.results, res.status)))
   .catch(err => dispatch(fetchContestantsError(err)));
 }
 
