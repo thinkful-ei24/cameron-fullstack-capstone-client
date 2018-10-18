@@ -43,13 +43,21 @@ export const deleteSelection = (contestant, week) => {
   })
 }
 
-export const SUBMIT_GUESSES_SUCCESS = 'SUBMIT_GUESSES_SUCCESS';
-export const submitGuessesSuccess = (status) => {
+export const SUBMIT_GUESSES_SUCCESS_STATUS = 'SUBMIT_GUESSES_SUCCESS_STATUS';
+export const submitGuessesSuccessStatus = (status) => {
   return ({
-    type: SUBMIT_GUESSES_SUCCESS,
+    type: SUBMIT_GUESSES_SUCCESS_STATUS,
     status
-  })
+  });
 }
+
+export const SUBMIT_GUESSES_SUCCESS = 'SUBMIT_GUESSES_SUCCESS';
+export const submitGuessesSuccess = () => {
+  return ({
+    type: SUBMIT_GUESSES_SUCCESS
+  });
+}
+
 export const SUBMIT_GUESSES_ERROR = 'SUBMIT_GUESSES_ERROR';
 export const submitGuessesError = (error) => {
   return ({

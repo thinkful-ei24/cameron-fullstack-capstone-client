@@ -9,7 +9,6 @@ import {FETCH_CONTESTANTS_REQUEST,
 const initialState = {
   loading: false,
   error: null,
-  status: null,
   week0: [],
   week1: [],
   week2: [],
@@ -60,8 +59,7 @@ export default function(state = initialState, action){
       return Object.assign({}, state, newObj);
     case SUBMIT_GUESSES_SUCCESS:
       return Object.assign({}, state, {
-        loading: false,
-        status: action.status
+        loading: false
       });
     case SUBMIT_GUESSES_ERROR:
       return Object.assign({}, state, {

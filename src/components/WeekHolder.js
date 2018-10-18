@@ -11,7 +11,7 @@ export class WeekHolder extends React.Component{
   }
 
   componentDidUpdate(prevProps){
-    if(prevProps === 'choosing' && this.props.status === 'results'){
+    if(prevProps.status === 'choosing' && this.props.status === 'results'){
       return <Redirect to='/submissionconfirmed' />
     } else if(this.props.status === 'results'){
       return <Redirect to='/results' />
@@ -80,7 +80,8 @@ const mapStateToProps = state => ({
   week8: state.selectionReducer.week8,
   week9: state.selectionReducer.week9,
   week10: state.selectionReducer.week10,
-  error: state.selectionReducer.error
+  error: state.selectionReducer.error,
+  status: state.authReducer.status
 });
 
 export default requiresLogin()(connect(mapStateToProps)(WeekHolder));
