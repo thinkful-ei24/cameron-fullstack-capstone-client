@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import WeekSelection from './WeekSelection';
-import DashboardHeader from './DashboardHeader';
 import { getContestants, submitGuesses, getStatus } from '../actions/selection-actions';
 import requiresLogin from './requires-login';
 
@@ -61,7 +60,6 @@ export class WeekHolder extends React.Component {
     }
     return (
       <div>
-        <DashboardHeader />
         {this.errorDisplay()}
         {this.renderReact()}
         <button disabled={!this.conditionsMet()} onClick={(e) => this.handleSubmit(e)}>Submit</button>

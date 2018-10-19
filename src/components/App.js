@@ -6,6 +6,7 @@ import WeekHolder from './WeekHolder';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import ResultsHolder from './ResultsHolder';
+import Header from './Header';
 import SubmissionConfrim from './SubmissionConfirm';
 import {refreshAuthToken} from '../actions/auth-actions';
 
@@ -43,8 +44,9 @@ export class App extends React.Component {
   render() {
     return (
       <div className='app'>
-        <Route exact path='/' component={SignUpForm} />
-        <Route exact path='/login' component={LoginForm} />
+        <Header />
+        <Route exact path='/signup' component={SignUpForm} />
+        <Route exact path='/' component={LoginForm} />
         <Route exact path='/selection' component={WeekHolder} />
         <Route exact path='/results' component={ResultsHolder} />
         <Route exact path='/submissionconfirmed' component={SubmissionConfrim} />

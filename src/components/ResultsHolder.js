@@ -4,7 +4,6 @@ import requiresLogin from './requires-login';
 import {Redirect} from 'react-router-dom';
 
 import WeekResults from './WeekResults';
-import DashboardHeader from './DashboardHeader';
 
 import {fetchResults} from '../actions/results-actions';
 import {getStatus} from '../actions/selection-actions';
@@ -38,7 +37,6 @@ export class ResultsHolder extends React.Component{
     }
     return(
       <div>
-        <DashboardHeader />
         {this.errorDisplay()}
         {this.renderReact()}
       </div>

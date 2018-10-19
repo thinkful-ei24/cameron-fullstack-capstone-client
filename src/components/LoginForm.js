@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {login} from '../actions/auth-actions';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 
 export class LoginForm extends React.Component{
   componentDidMount(){
@@ -41,23 +41,26 @@ export class LoginForm extends React.Component{
       return <Redirect to='/selection' />;
     }
     return(
-      <form className='login-form' onSubmit={(e) => this.handleSubmit(e) }>
-        {this.errorDisplay()}
-        <label htmlFor='username'>Username:</label>
-        <input type='text' name='username' id='username'
-          onChange={e => this.customValidity(e.target)} />
-        <label htmlFor='password'>Password:</label>
-        <input type='text' name='password' id='password'
-          onChange={e => this.customValidity(e.target)}/>
-        <button type='submit'>Login</button>
-      </form>
+      <div>
+        <form className='login-form' onSubmit={(e) => this.handleSubmit(e) }>
+          {this.errorDisplay()}
+          <label htmlFor='username'>Username:</label>
+          <input type='text' name='username' id='username'
+            onChange={e => this.customValidity(e.target)} />
+          <label htmlFor='password'>Password:</label>
+          <input type='text' name='password' id='password'
+            onChange={e => this.customValidity(e.target)}/>
+          <button type='submit'>Login</button>
+        </form>
+        <div>Don't have an account? <Link to='/signup'>Sign up now!</Link></div>
+
+      </div>
     )
   }
 
 }
 
 const mapStateToProps = (state) =>{
-  console.log(state.authReducer.currentUser);
   return ({
     error: state.authReducer.error,
     loggedIn: state.authReducer.currentUser !== null
