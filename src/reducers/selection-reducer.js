@@ -4,13 +4,16 @@ import {FETCH_CONTESTANTS_REQUEST,
   ADD_SELECTION,
   DELETE_SELECTION,
   SUBMIT_GUESSES_SUCCESS,
-  SUBMIT_GUESSES_ERROR} from '../actions/selection-actions';
+  SUBMIT_GUESSES_ERROR,
+  GET_STATUS_SUCCESS,
+  CLEAR_ERROR} from '../actions/selection-actions';
 
-import {FETCH_RESULTS_SUCCESS} from '../actions/results-actions'; 
+import {FETCH_RESULTS_SUCCESS, FETCH_RESULTS_ERROR} from '../actions/results-actions'; 
 
 const initialState = {
   loading: false,
-  error: null,
+  selectionError: null,
+  resultsError: null,
   week0: [],
   week1: [],
   week2: [],
@@ -39,7 +42,11 @@ const fixDelete = (state, contestant, week)=>{
 export default function(state = initialState, action){
   switch(action.type){
     case FETCH_CONTESTANTS_REQUEST:
-      return Object.assign({}, state, {loading: true});
+      return Object.assign({}, state, {
+        loading: true,
+        selectionError: null,
+        resultsError: null
+      });
     case FETCH_CONTESTANTS_SUCCESS:
       return Object.assign({}, state,{
         loading: false,
@@ -48,7 +55,7 @@ export default function(state = initialState, action){
     case FETCH_CONTESTANTS_ERROR:
       return Object.assign({}, state, {
         loading: false,
-        error: action.error
+        selectionError: action.error
       }); 
     case ADD_SELECTION:
       if(action.contestant){
@@ -70,14 +77,28 @@ export default function(state = initialState, action){
     case SUBMIT_GUESSES_ERROR:
       return Object.assign({}, state, {
         loading: false,
-        error: action.error
+        selectionError: action.error
       });
     case FETCH_RESULTS_SUCCESS:
       return Object.assign({}, state, {
         results: action.data.feedback,
         status: action.data.status, 
         loading: false
-      });      
+      });
+    case GET_STATUS_SUCCESS:
+      return Object.assign({}, state, {
+        status: action.status, 
+        loading: false
+      }); 
+    case CLEAR_ERROR:
+      return Object.assign({}, state, {
+        selectionError: null,
+        resultsError: null
+      });
+    case FETCH_RESULTS_ERROR:
+      return Object.assign({}, state, {
+        resultsError: action.error
+      });          
     default:
       return state  
   }

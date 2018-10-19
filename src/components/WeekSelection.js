@@ -16,7 +16,7 @@ export class WeekSelection extends React.Component{
     return (
       <div>
         <h2>{`Week ${this.props.week}`}</h2>
-        <ContestantDropDown week={this.props.week} />
+        {this.renderReact()}
         <Selections week={this.props.week} />
       </div>
     )

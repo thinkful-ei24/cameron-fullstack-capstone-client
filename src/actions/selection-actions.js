@@ -4,7 +4,7 @@ import {normalizeResponseErrors} from './utils';
 export const FETCH_CONTESTANTS_REQUEST = 'FETCH_CONTESTANTS_REQUEST';
 export const fetchContestantsRequest = () => {
   return ({
-    type: FETCH_CONTESTANTS_REQUEST
+    type: FETCH_CONTESTANTS_REQUEST,
   });
 };
 
@@ -59,6 +59,21 @@ export const submitGuessesError = (error) => {
   });
 }
 
+export const GET_STATUS_SUCCESS = 'GET_STATUS_SUCCESS';
+export const getStatusSuccess = (status) => {
+  return ({
+    type: GET_STATUS_SUCCESS,
+    status
+  })
+}
+
+export const CLEAR_ERROR = 'CLEAR_ERROR';
+export const clearError = () => {
+  return ({
+    type: CLEAR_ERROR
+  })
+}
+
 export const getContestants = (jwt) => (dispatch) => {
   dispatch(fetchContestantsRequest());
   fetch(`${API_BASE_URL}/api/contestants`, {
@@ -72,11 +87,25 @@ export const getContestants = (jwt) => (dispatch) => {
   .catch(err => dispatch(fetchContestantsError(err)));
 }
 
+export const getStatus = (jwt) => (dispatch) => {
+  dispatch(fetchContestantsRequest());
+  fetch(`${API_BASE_URL}/api/status`, {
+    headers: {
+      'Authorization': `Bearer ${jwt}`
+    }
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
+  .then(res => dispatch(getStatusSuccess(res)))
+  .catch(err => dispatch(fetchContestantsError(err)));
+}
+
 export const submitGuesses = (jwt, guesses) => (dispatch, getState) => {
   dispatch(fetchContestantsRequest());
   fetch(`${API_BASE_URL}/api/guesses`, {
     method: 'POST',
     headers: {
+      'Content-type': 'application/json',
       'Authorization': `Bearer ${jwt}`
     },
     body: JSON.stringify(guesses)
