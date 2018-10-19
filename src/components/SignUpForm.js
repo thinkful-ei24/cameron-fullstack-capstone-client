@@ -65,7 +65,6 @@ export class LoginForm extends React.Component{
 }
 
 const mapStateToProps = (state) =>{
-  console.log(state.authReducer.currentUser);
   return ({
     error: state.authReducer.error,
     loggedIn: state.authReducer.currentUser !== null
