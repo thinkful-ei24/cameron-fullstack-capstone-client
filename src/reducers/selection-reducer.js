@@ -8,7 +8,8 @@ import {FETCH_CONTESTANTS_REQUEST,
   GET_STATUS_SUCCESS,
   CLEAR_ERROR} from '../actions/selection-actions';
 
-import {FETCH_RESULTS_SUCCESS, FETCH_RESULTS_ERROR} from '../actions/results-actions'; 
+import {FETCH_RESULTS_SUCCESS, FETCH_RESULTS_ERROR} from '../actions/results-actions';
+import {FETCH_LEADERBOARD_SUCCESS} from '../actions/leaderboard-actions'; 
 
 const initialState = {
   loading: false,
@@ -28,7 +29,8 @@ const initialState = {
   status: null,
   results: {week1:{}, week2:{}, week3:{}, week4:{}, week5:{},
     week6:{}, week7:{}, week8:{}, week9:{}, week10:{}},
-  scores: Array(10).fill('')  
+  scores: Array(10).fill(''),
+  leaderboard: null  
 }; 
 
 const fixDelete = (state, contestant, week)=>{
@@ -100,7 +102,12 @@ export default function(state = initialState, action){
       return Object.assign({}, state, {
         loading: false,
         resultsError: action.error
-      });          
+      });
+    case FETCH_LEADERBOARD_SUCCESS:
+      return Object.assign({}, state, {
+        loading: false,
+        leaderboard: action.leaderboard
+      });            
     default:
       return state  
   }

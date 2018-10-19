@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import WeekSelection from './WeekSelection';
-import { getContestants, submitGuesses, getSelection } from '../actions/selection-actions';
+import { submitGuesses, getSelection } from '../actions/selection-actions';
 import requiresLogin from './requires-login';
 
 export class WeekHolder extends React.Component {

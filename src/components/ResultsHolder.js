@@ -6,7 +6,6 @@ import {Redirect} from 'react-router-dom';
 import WeekResults from './WeekResults';
 
 import {getResults} from '../actions/results-actions';
-import {getStatus} from '../actions/selection-actions';
 
 export class ResultsHolder extends React.Component{
   componentWillMount(){

@@ -9,6 +9,7 @@ import ResultsHolder from './ResultsHolder';
 import Header from './Header';
 import SubmissionConfrim from './SubmissionConfirm';
 import {refreshAuthToken} from '../actions/auth-actions';
+import Leaderboard from './Leaderboard';
 
 
 export class App extends React.Component {
@@ -50,6 +51,7 @@ export class App extends React.Component {
         <Route exact path='/selection' component={WeekHolder} />
         <Route exact path='/results' component={ResultsHolder} />
         <Route exact path='/submissionconfirmed' component={SubmissionConfrim} />
+        <Route exact path='/results/leaderboard' component={Leaderboard} />
       </div>
     )
   }
