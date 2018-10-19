@@ -1,70 +1,73 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {signup} from '../actions/signup-actions';
-import {Redirect} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { signup } from '../actions/signup-actions';
+import { Redirect, Link } from 'react-router-dom';
 
-export class LoginForm extends React.Component{
+export class LoginForm extends React.Component {
 
-  componentDidMount(){
+  componentDidMount() {
     const username = document.getElementById('username');
     const password = document.getElementById('password');
     this.customValidity(username);
     this.customValidity(password);
   }
 
-  handleSubmit(event){
+  handleSubmit(event) {
     event.preventDefault();
     let password = event.target['password'].value;
     let username = event.target['username'].value;
     this.props.dispatch(signup(username, password))
-    event.target['password'].value='';
-    event.target['username'].value='';
+    event.target['password'].value = '';
+    event.target['username'].value = '';
 
   }
-  customValidity(event){
+  customValidity(event) {
     console.log(event.value);
-    if (!event.value){
+    if (!event.value) {
       event.setCustomValidity('Field is required');
-    } else if (event.value.trim() !== event.value){
+    } else if (event.value.trim() !== event.value) {
       event.setCustomValidity('Field cannot start or end with whitespace')
-    } else if (event.id === 'password' && event.value.length<8){
+    } else if (event.id === 'password' && event.value.length < 8) {
       event.setCustomValidity('Password cannot be less than 8 characters')
-    } else if (event.id === 'password' && event.value.length>72){
+    } else if (event.id === 'password' && event.value.length > 72) {
       event.setCustomValidity('Password cannot be more than 72 characters')
-    } else if (event.id === 'username' && event.value.length<1){
+    } else if (event.id === 'username' && event.value.length < 1) {
       event.setCustomValidity('Username cannot be less than 2 characters')
-    }else{
+    } else {
       event.setCustomValidity('');
     }
   }
-  errorDisplay(){
-    if(this.props.error){
-      return(
+  errorDisplay() {
+    if (this.props.error) {
+      return (
         <div className='errorDisplay'>{this.props.error.message}</div>
       )
     }
   }
-  render(){
-    if(this.props.loggedIn){
+  render() {
+    if (this.props.loggedIn) {
       return <Redirect to='/selection' />;
     }
-    return(
-      <form className='signup-form' onSubmit={(e) => this.handleSubmit(e) }>
-        {this.errorDisplay()}
-        <label htmlFor='username'>Username:</label>
-        <input type='text' name='username' id='username'
-          onChange={e => this.customValidity(e.target)} />
-        <label htmlFor='password'>Password:</label>
-        <input type='text' name='password' id='password'
-          onChange={e => this.customValidity(e.target)}/>
-        <button type='submit'>Sign Up</button>
-      </form>
+    return (
+      <div>
+        <form className='signup-form' onSubmit={(e) => this.handleSubmit(e)}>
+          {this.errorDisplay()}
+          <label htmlFor='username'>Username:</label>
+          <input type='text' name='username' id='username'
+            onChange={e => this.customValidity(e.target)} />
+          <label htmlFor='password'>Password:</label>
+          <input type='text' name='password' id='password'
+            onChange={e => this.customValidity(e.target)} />
+          <button type='submit'>Sign Up</button>
+        </form>
+        <div>Already have an account? <Link to='/'>Log in now!</Link></div>
+      </div>
     )
   }
 
 }
 
-const mapStateToProps = (state) =>{
+const mapStateToProps = (state) => {
   return ({
     error: state.authReducer.error,
     loggedIn: state.authReducer.currentUser !== null

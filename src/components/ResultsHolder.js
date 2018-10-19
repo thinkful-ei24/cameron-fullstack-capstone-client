@@ -5,15 +5,12 @@ import {Redirect} from 'react-router-dom';
 
 import WeekResults from './WeekResults';
 
-import {fetchResults} from '../actions/results-actions';
+import {getResults} from '../actions/results-actions';
 import {getStatus} from '../actions/selection-actions';
 
 export class ResultsHolder extends React.Component{
   componentWillMount(){
-    this.props.dispatch(getStatus(this.props.jwt));
-  }
-  componentDidMount(){
-    this.props.dispatch(fetchResults());
+    this.props.dispatch(getResults());
   }
 
   errorDisplay(){
@@ -35,6 +32,9 @@ export class ResultsHolder extends React.Component{
     if(this.props.status === 'choosing'){
       return <Redirect to='/selection'/>
     }
+    if(this.props.loading){
+      return <div>Loading...</div>
+    }
     return(
       <div>
         {this.errorDisplay()}
@@ -49,7 +49,7 @@ const mapStateToProps = (state) => {
     results: state.selectionReducer.results,
     error: state.selectionReducer.resultsError,
     status: state.selectionReducer.status,
-    jwt: state.authReducer.authToken
+    loading: state.selectionReducer.loading
   })
 }
 

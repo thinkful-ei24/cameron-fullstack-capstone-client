@@ -87,8 +87,7 @@ export default function(state = initialState, action){
       });
     case GET_STATUS_SUCCESS:
       return Object.assign({}, state, {
-        status: action.status, 
-        loading: false
+        status: action.status
       }); 
     case CLEAR_ERROR:
       return Object.assign({}, state, {
@@ -97,6 +96,7 @@ export default function(state = initialState, action){
       });
     case FETCH_RESULTS_ERROR:
       return Object.assign({}, state, {
+        loading: false,
         resultsError: action.error
       });          
     default:

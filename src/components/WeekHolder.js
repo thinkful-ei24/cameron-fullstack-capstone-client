@@ -2,15 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import WeekSelection from './WeekSelection';
-import { getContestants, submitGuesses, getStatus } from '../actions/selection-actions';
+import { getContestants, submitGuesses, getSelection } from '../actions/selection-actions';
 import requiresLogin from './requires-login';
 
 export class WeekHolder extends React.Component {
   componentWillMount() {
-    this.props.dispatch(getStatus(this.props.jwt));
-  }
-  componentDidMount() {
-    this.props.dispatch(getContestants(this.props.jwt));
+    this.props.dispatch(getSelection(this.props.jwt));
   }
 
   handleSubmit(e) {
@@ -58,6 +55,9 @@ export class WeekHolder extends React.Component {
     if (this.props.status === 'results') {
       return <Redirect to='/results' />
     }
+    if(this.props.loading){
+      return <div>Loading...</div>
+    }
     return (
       <div>
         {this.errorDisplay()}
@@ -80,7 +80,8 @@ const mapStateToProps = state => ({
   week9: state.selectionReducer.week9,
   week10: state.selectionReducer.week10,
   error: state.selectionReducer.selectionError,
-  status: state.selectionReducer.status
+  status: state.selectionReducer.status,
+  loading: state.selectionReducer.loading
 });
 
 export default requiresLogin()(connect(mapStateToProps)(WeekHolder));

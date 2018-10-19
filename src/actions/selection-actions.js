@@ -87,7 +87,7 @@ export const getContestants = (jwt) => (dispatch) => {
   .catch(err => dispatch(fetchContestantsError(err)));
 }
 
-export const getStatus = (jwt) => (dispatch) => {
+export const getSelection = (jwt) => (dispatch) => {
   dispatch(fetchContestantsRequest());
   fetch(`${API_BASE_URL}/api/status`, {
     headers: {
@@ -97,6 +97,7 @@ export const getStatus = (jwt) => (dispatch) => {
   .then(res => normalizeResponseErrors(res))
   .then(res => res.json())
   .then(res => dispatch(getStatusSuccess(res)))
+  .then(() => dispatch(getContestants(jwt)))
   .catch(err => dispatch(fetchContestantsError(err)));
 }
 
@@ -112,6 +113,6 @@ export const submitGuesses = (jwt, guesses) => (dispatch, getState) => {
   })
   .then(res => normalizeResponseErrors(res))
   .then(res => res.json())
-  .then(res => dispatch(submitGuessesSuccess('results')))
+  .then(res => dispatch(submitGuessesSuccess(res.status)))
   .catch(err => dispatch(submitGuessesError(err)));
 }
