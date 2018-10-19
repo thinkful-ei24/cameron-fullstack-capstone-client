@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchLeaderboard } from '../actions/leaderboard-actions';
 
+import LeaderResult from './LeaderResult';
+
 export class Leaderboard extends React.Component {
   componentWillMount() {
     this.props.dispatch(fetchLeaderboard());
   }
-  niceResults() {
+  currentResults() {
     const { leaderboard } = this.props;
     let results = [{
       place: 1,
@@ -29,12 +31,20 @@ export class Leaderboard extends React.Component {
     }
     return results;
   }
+  renderReact(){
+    const people=this.currentResults();
+    const results=[];
+    for (let i=0; i<people.length; i++){
+      results.push(<LeaderResult key={i} person={people[i]} />)
+    }
+    return results;
+  }
   render() {
     if(!this.props.leaderboard){
       return <div>Sorry, results are not available at this time</div>
     }
     return (
-      <div>{this.niceResults().map(obj => obj.score)}</div>
+      <div>{this.renderReact()}</div>
     );
   }
 };
