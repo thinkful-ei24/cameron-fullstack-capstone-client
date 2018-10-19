@@ -20,7 +20,7 @@ export class Leaderboard extends React.Component {
     for (let i = 1; i < leaderboard.length; i++) {
       // want users with the same score to have the same place on the leaderboard
       if (leaderboard[i].score < leaderboard[i - 1].score) {
-        place = i - 1;
+        place = i + 1;
       }
       const newResult = {
         place,
