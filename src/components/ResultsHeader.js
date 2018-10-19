@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 export class ResultsHeader extends React.Component{
   setScore(){
-    const score = this.props.scores[this.props.week];
+    const score = this.props.scores[this.props.week-1];
     if(score && score > 1){
       return <span>{score} points</span>;
     }else if(score === 1){

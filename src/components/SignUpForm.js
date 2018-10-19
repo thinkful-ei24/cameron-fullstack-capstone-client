@@ -22,7 +22,6 @@ export class LoginForm extends React.Component {
 
   }
   customValidity(event) {
-    console.log(event.value);
     if (!event.value) {
       event.setCustomValidity('Field is required');
     } else if (event.value.trim() !== event.value) {
