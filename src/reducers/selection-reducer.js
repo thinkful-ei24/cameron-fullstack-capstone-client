@@ -27,7 +27,8 @@ const initialState = {
   week10: [], 
   status: null,
   results: {week1:{}, week2:{}, week3:{}, week4:{}, week5:{},
-    week6:{}, week7:{}, week8:{}, week9:{}, week10:{}}
+    week6:{}, week7:{}, week8:{}, week9:{}, week10:{}},
+  scores: Array(10).fill('')  
 }; 
 
 const fixDelete = (state, contestant, week)=>{
@@ -83,6 +84,7 @@ export default function(state = initialState, action){
       return Object.assign({}, state, {
         results: action.data.feedback,
         status: action.data.status, 
+        scores: action.data.scores,
         loading: false
       });
     case GET_STATUS_SUCCESS:
