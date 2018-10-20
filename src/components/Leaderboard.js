@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchLeaderboard } from '../actions/leaderboard-actions';
+import {Link} from 'react-router-dom';
 
 import LeaderResult from './LeaderResult';
 
@@ -41,10 +42,17 @@ export class Leaderboard extends React.Component {
   }
   render() {
     if(!this.props.leaderboard){
-      return <div>Sorry, results are not available at this time</div>
+      return (
+      <div>
+        <div>Sorry, leaderboard results are not available at this time</div>
+        <Link to='/results' >Back to your results</Link>
+       </div>)
     }
     return (
-      <div>{this.renderReact()}</div>
+      <div>
+        <Link to='/results' >Back to your results</Link>
+        <div>{this.renderReact()}</div>
+      </div>
     );
   }
 };

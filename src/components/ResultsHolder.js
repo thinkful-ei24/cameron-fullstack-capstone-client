@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
 
 import WeekResults from './WeekResults';
 
@@ -36,6 +36,7 @@ export class ResultsHolder extends React.Component{
     }
     return(
       <div>
+        <Link to='/results/leaderboard'>See the leaderboard!</Link>
         {this.errorDisplay()}
         {this.renderReact()}
       </div>
