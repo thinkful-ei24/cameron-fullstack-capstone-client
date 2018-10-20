@@ -15,6 +15,7 @@ export class ResultsHeader extends React.Component{
       <div>
         <h2>Week {this.props.week}</h2>
         {this.setScore()}
+        <button onClick={() => this.props.onClick()}>{this.props.button}</button>
       </div>
     );
   }
