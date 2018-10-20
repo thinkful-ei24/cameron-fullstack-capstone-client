@@ -2,13 +2,15 @@ import {SET_AUTH_TOKEN,
   CLEAR_AUTH,
   AUTH_SUCCESS,
   AUTH_REQUEST,
-  AUTH_ERROR} from '../actions/auth-actions';
+  AUTH_ERROR,
+  TOGGLE_INFO_DISPLAY} from '../actions/auth-actions';
 
 const initialState = {
   authToken: null,
   currentUser: null,
   loading: false,
-  error: null  
+  error: null,
+  infoDisplay: false 
 }
 
 export default function(state = initialState, action){
@@ -37,6 +39,10 @@ export default function(state = initialState, action){
       loading: false,
       error: action.error
       });
+    case TOGGLE_INFO_DISPLAY:
+      return Object.assign({}, state, {
+        infoDisplay: !state.infoDisplay
+      });  
     default:
       return state;  
   }

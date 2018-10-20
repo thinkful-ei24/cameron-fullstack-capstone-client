@@ -10,6 +10,7 @@ import Header from './Header';
 import SubmissionConfrim from './SubmissionConfirm';
 import {refreshAuthToken} from '../actions/auth-actions';
 import Leaderboard from './Leaderboard';
+import Info from './Info';
 
 
 export class App extends React.Component {
@@ -43,6 +44,14 @@ export class App extends React.Component {
   }
 
   render() {
+    if(this.props.infoDisplay){
+      return (
+        <div className='app'>
+          <Header />
+          <Info />
+        </div>
+      )
+    }
     return (
       <div className='app'>
         <Header />
@@ -59,7 +68,8 @@ export class App extends React.Component {
 
 const mapStateToProps = state => ({
   hasAuthToken: state.authReducer.authToken !== null,
-  loggedIn: state.authReducer.currentUser !== null
+  loggedIn: state.authReducer.currentUser !== null,
+  infoDisplay: state.authReducer.infoDisplay
 })
 
 export default withRouter(connect(mapStateToProps)(App));

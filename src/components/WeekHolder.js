@@ -8,6 +8,9 @@ import requiresLogin from './requires-login';
 export class WeekHolder extends React.Component {
   componentWillMount() {
     this.props.dispatch(getSelection(this.props.jwt));
+    if (this.props.status === 'results') {
+      return <Redirect to='/results' />
+    }
   }
 
   handleSubmit(e) {
