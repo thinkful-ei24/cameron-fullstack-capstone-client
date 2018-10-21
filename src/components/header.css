@@ -1,0 +1,42 @@
+.nav-bar{
+  display: flex;
+  align-items: center;
+}
+
+h1{
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 24px;  
+}
+
+.info-button:hover, .close-button:hover, .logout:hover{
+  color: white;
+  background-color: black;
+}
+
+.info-button, .close-button, .logout{
+  background-color:Transparent;
+  font-size: 15px;
+  color: black;
+  margin-right: 5px;
+  border: none;
+}
+
+.logout{
+  font-size: 9px;
+}
+
+/* Non-mobile, grid */
+@media only screen and (min-width: 640px){
+  h1{
+    font-size: 40px;
+  }
+  .info-button, .close-button, .logout{
+    font-size: 25px;
+    margin-right: 10px;
+  }
+   
+  .logout{
+    font-size: 15px;
+  }
+}

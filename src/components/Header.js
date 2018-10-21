@@ -1,33 +1,49 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {clearAuth, toggleInfoDisplay} from '../actions/auth-actions';
-import {clearAuthToken} from '../local-storage';
+import { connect } from 'react-redux';
+import { clearAuth, toggleInfoDisplay } from '../actions/auth-actions';
+import { clearAuthToken } from '../local-storage';
 
-export class HeaderBar extends React.Component{
+import './header.css';
 
-  logOut(){
+export class HeaderBar extends React.Component {
+
+  logOut() {
     this.props.dispatch(clearAuth());
     clearAuthToken();
   }
-  infoButton(){
-    if(this.props.infoDisplay){
-      return "Got it!";
+  infoButton() {
+    if (this.props.infoDisplay) {
+      return (
+        <button
+        className='close-button'
+        aria-label='Close info'
+        onClick={() => this.props.dispatch(toggleInfoDisplay())}>
+        X
+      </button>
+      );
     }
-    return '?';
+    return (
+      <button
+        className='info-button'
+        aria-label='More info'
+        onClick={() => this.props.dispatch(toggleInfoDisplay())}>
+        ?
+      </button>
+    );
   }
 
-  render(){
+  render() {
     let logOutButton;
-    if(this.props.loggedIn){
+    if (this.props.loggedIn) {
       logOutButton = (
-        <button onClick={() => this.logOut()}>Logout</button>
+        <button className='logout' onClick={() => this.logOut()}>Logout</button>
       )
     }
-    return(
-      <nav>
+    return (
+      <nav role='navigation' className='nav-bar'>
         <h1>The Bachelorette Fantasy League</h1>
+        {this.infoButton()}
         {logOutButton}
-        <button onClick={() => this.props.dispatch(toggleInfoDisplay())}>{this.infoButton()}</button>
       </nav>
     )
   }
