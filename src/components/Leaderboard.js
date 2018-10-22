@@ -39,7 +39,7 @@ export class Leaderboard extends React.Component {
     const results = [];
     for (let i = 0; i < people.length; i++) {
       if(people[i].username === this.props.username){
-        results.push(<LeaderResult className='current-user' key={i} person={people[i]} />)
+        results.push(<LeaderResult className='leader-result current-user' key={i} person={people[i]} />)
       } else{
         results.push(<LeaderResult className='leader-result' key={i} person={people[i]} />)
       }

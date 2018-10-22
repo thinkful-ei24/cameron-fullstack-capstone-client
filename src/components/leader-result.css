@@ -4,6 +4,14 @@
   margin: 10px;
 }
 
+.leader-result:nth-child(even){
+  background-color: rgba(171, 48, 48, 0.33);
+}
+
+.leader-result:nth-child(odd){
+  background-color: rgba(149, 156, 155, 0.33);
+}
 .current-user{
-  background-color: orange;
+  background-color: rgba(121, 167, 240, 0.33) !important;
+  border: 2px solid black;
 }
