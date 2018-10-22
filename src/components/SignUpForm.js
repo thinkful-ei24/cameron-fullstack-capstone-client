@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { signup } from '../actions/signup-actions';
 import { Redirect, Link } from 'react-router-dom';
 
+import './signup-form.css';
+
 export class LoginForm extends React.Component {
 
   componentDidMount() {
@@ -57,9 +59,9 @@ export class LoginForm extends React.Component {
           <label htmlFor='password'>Password:</label>
           <input type='text' name='password' id='password'
             onChange={e => this.customValidity(e.target)} />
-          <button type='submit'>Sign Up</button>
+          <button className='submit-user' type='submit'>Sign Up</button>
         </form>
-        <div>Already have an account? <Link to='/'>Log in now!</Link></div>
+        <div>Already have an account? <Link className='link' to='/'>Log in now!</Link></div>
       </div>
     )
   }
