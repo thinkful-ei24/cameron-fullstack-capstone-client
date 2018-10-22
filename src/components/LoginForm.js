@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {login} from '../actions/auth-actions';
 import {Redirect, Link} from 'react-router-dom';
 
+import './login-form.css';
+
 export class LoginForm extends React.Component{
   componentDidMount(){
     const username = document.getElementById('username');
@@ -52,7 +54,7 @@ export class LoginForm extends React.Component{
             onChange={e => this.customValidity(e.target)}/>
           <button type='submit'>Login</button>
         </form>
-        <div>Don't have an account? <Link to='/signup'>Sign up now!</Link></div>
+        <div>Don't have an account? <Link className='link' to='/signup'>Sign up now!</Link></div>
 
       </div>
     )
