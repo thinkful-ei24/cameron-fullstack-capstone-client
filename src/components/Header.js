@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { clearAuth, toggleInfoDisplay } from '../actions/auth-actions';
 import { clearAuthToken } from '../local-storage';
 
+
 import './header.css';
 
 export class HeaderBar extends React.Component {
@@ -27,7 +28,7 @@ export class HeaderBar extends React.Component {
         className='info-button'
         aria-label='More info'
         onClick={() => this.props.dispatch(toggleInfoDisplay())}>
-          <i class="far fa-question-circle"></i>
+          <i className="far fa-question-circle"></i>
       </button>
     );
   }
@@ -40,15 +41,17 @@ export class HeaderBar extends React.Component {
         className='logout'
         aria-label='Log out' 
         onClick={() => this.logOut()}>
-          <i class="fas fa-sign-out-alt"></i>
+          <i className="fas fa-sign-out-alt"></i>
         </button>
       )
     }
     return (
       <nav role='navigation' className='nav-bar'>
-        <h1>The Bachelorette Fantasy League</h1>
+        <h1> The Bachelorette Fantasy League</h1>
+        <div>
         {this.infoButton()}
         {logOutButton}
+        </div>
       </nav>
     )
   }
