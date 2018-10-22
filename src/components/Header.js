@@ -27,7 +27,7 @@ export class HeaderBar extends React.Component {
         className='info-button'
         aria-label='More info'
         onClick={() => this.props.dispatch(toggleInfoDisplay())}>
-        ?
+          <i class="far fa-question-circle"></i>
       </button>
     );
   }
@@ -36,7 +36,12 @@ export class HeaderBar extends React.Component {
     let logOutButton;
     if (this.props.loggedIn) {
       logOutButton = (
-        <button className='logout' onClick={() => this.logOut()}>Logout</button>
+        <button 
+        className='logout'
+        aria-label='Log out' 
+        onClick={() => this.logOut()}>
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
       )
     }
     return (
