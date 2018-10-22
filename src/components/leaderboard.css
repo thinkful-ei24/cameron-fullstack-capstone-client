@@ -1,0 +1,12 @@
+.leaderboard{
+  border: 2px solid black;
+  margin-top: 15px;
+}
+
+.leader-result:nth-child(odd){
+  background-color: pink;
+}
+
+.current-user{
+  background-color: orange;
+}

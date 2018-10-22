@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requiresLogin from './requires-login';
 import { fetchLeaderboard } from '../actions/leaderboard-actions';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
+import './leaderboard.css';
 
 import LeaderResult from './LeaderResult';
 
@@ -32,32 +34,39 @@ export class Leaderboard extends React.Component {
     }
     return results;
   }
-  renderReact(){
-    const people=this.currentResults();
-    const results=[];
-    for (let i=0; i<people.length; i++){
-      results.push(<LeaderResult key={i} person={people[i]} />)
+  renderReact() {
+    const people = this.currentResults();
+    const results = [];
+    for (let i = 0; i < people.length; i++) {
+      if(people[i].username === this.props.username){
+        results.push(<LeaderResult className='current-user' key={i} person={people[i]} />)
+      } else{
+        results.push(<LeaderResult className='leader-result' key={i} person={people[i]} />)
+      }
     }
     return results;
   }
   render() {
-    if(!this.props.leaderboard){
+    if (!this.props.leaderboard) {
       return (
-      <div>
-        <div>Sorry, leaderboard results are not available at this time</div>
-        <Link to='/results' >Back to your results</Link>
-       </div>)
+        <div>
+          <div>Sorry, leaderboard results are not available at this time</div>
+          <Link to='/results' >Back to your results</Link>
+        </div>)
     }
     return (
       <div>
         <Link to='/results' >Back to your results</Link>
-        <div>{this.renderReact()}</div>
+        <div className='leaderboard'>
+          {this.renderReact()}
+        </div>
       </div>
     );
   }
 };
 
 const mapStateToProps = (state) => ({
-  leaderboard: state.selectionReducer.leaderboard
+  leaderboard: state.selectionReducer.leaderboard,
+  username: state.authReducer.currentUser.username
 })
 export default requiresLogin()(connect(mapStateToProps)(Leaderboard));

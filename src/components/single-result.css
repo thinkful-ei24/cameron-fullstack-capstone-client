@@ -1,7 +1,27 @@
 .correct{
-  background-color: green;
+  background-color: #0cf7ac;
+  border: 1.5px solid #00593d;
+  color: #00593d;
+  font-weight: bold;
 }
 
 .incorrect{
-  background-color: red;
+  background-color: #f26d7e;
+  border: 1.5px solid #770211;
+  color: #770211;
+  font-weight: bold;
+}
+
+div{
+  padding: 2px;
+  text-align: center;
+  margin: 2px;
+}
+
+/* Non-mobile, grid */
+@media only screen and (min-width: 640px){
+  div{
+    padding: 5px;
+  }
+
 }

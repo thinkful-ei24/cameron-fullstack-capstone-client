@@ -1,5 +1,6 @@
 import React from 'react';
 
+import './week-result.css';
 import SingleResult from './SingleResult';
 import ResultsHeader from './ResultsHeader';
 
@@ -25,15 +26,15 @@ export default class WeekResults extends React.Component{
   render(){
     if(this.state.expanded){
       return(
-        <div>
-        <ResultsHeader week={this.props.week} button='+' onClick={() => this.expandToggle()}/>
-          {this.renderReact()}  
+        <div className='week-results'>
+        <ResultsHeader week={this.props.week} button='-' onClick={() => this.expandToggle()}/>
+          <div className='results-container'>{this.renderReact()}</div>  
         </div>
       )
     }
     return (
-      <div>
-      <ResultsHeader week={this.props.week} button='-' onClick={() => this.expandToggle()}/>
+      <div className='week-results'>
+      <ResultsHeader week={this.props.week} button='+' onClick={() => this.expandToggle()}/>
       </div>
     )
   }

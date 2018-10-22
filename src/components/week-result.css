@@ -1,0 +1,17 @@
+.week-results{
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.results-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+/* Non-mobile, grid */
+@media only screen and (min-width: 640px){
+  .week-results{
+    margin: 15px;
+  }
+
+}

@@ -1,0 +1,9 @@
+.leader-result{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.current-user{
+  background-color: orange;
+}
