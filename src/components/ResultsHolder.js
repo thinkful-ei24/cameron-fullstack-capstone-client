@@ -36,7 +36,7 @@ export class ResultsHolder extends React.Component{
     }
     return(
       <div>
-        <Link to='/results/leaderboard'>See the leaderboard!</Link>
+        <Link className='link' to='/results/leaderboard'>See the leaderboard!</Link>
         {this.errorDisplay()}
         {this.renderReact()}
       </div>

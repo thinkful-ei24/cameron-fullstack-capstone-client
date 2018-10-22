@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
 
+import './app.css';
+
 import WeekHolder from './WeekHolder';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';

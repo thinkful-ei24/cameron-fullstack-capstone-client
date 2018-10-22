@@ -56,7 +56,7 @@ export class Leaderboard extends React.Component {
     }
     return (
       <div>
-        <Link to='/results' >Back to your results</Link>
+        <Link className='link' to='/results' >Back to your results</Link>
         <div className='leaderboard'>
           {this.renderReact()}
         </div>
