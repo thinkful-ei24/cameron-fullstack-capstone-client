@@ -66,6 +66,7 @@ export class WeekHolder extends React.Component {
     return (
       <main role='main'>
         {this.errorDisplay()}
+        <p className='selection-instructions'>Make your selections here:</p>
         {this.renderReact()}
         <button className='submit-guesses' disabled={!this.conditionsMet()} onClick={(e) => this.handleSubmit(e)}>Submit</button>
       </main>

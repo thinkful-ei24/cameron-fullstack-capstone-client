@@ -8,3 +8,8 @@
 .submit-guesses:hover{
   background-color: rgba(171, 48, 48, 1);
 }
+
+.selection-instructions{
+  font-weight: bold;
+  margin-top: 5px;
+}
