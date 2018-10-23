@@ -7,6 +7,10 @@
 .week-selection-container{
   border: 1px solid black;
 }
+.week-selection-container:nth-child(even) h2{
+  color: rgba(171, 48, 48, 1);
+}
+
 
 /* Non-mobile, grid */
 @media only screen and (min-width: 640px){
