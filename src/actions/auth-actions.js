@@ -42,6 +42,11 @@ export const toggleInfoDisplay = () => ({
   type: TOGGLE_INFO_DISPLAY
 });
 
+export const CLEAR_ERROR = 'CLEAR_ERROR';
+export const clearError = () => ({
+  type: CLEAR_ERROR
+});
+
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {

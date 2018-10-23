@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { signup } from '../actions/signup-actions';
 import { Redirect, Link } from 'react-router-dom';
 
+import {clearError} from '../actions/auth-actions';
+
 import './signup-form.css';
 
 export class LoginForm extends React.Component {
@@ -12,6 +14,7 @@ export class LoginForm extends React.Component {
     const password = document.getElementById('password');
     this.customValidity(username);
     this.customValidity(password);
+    this.props.dispatch(clearError());
   }
 
   handleSubmit(event) {
