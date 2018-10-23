@@ -1,6 +1,7 @@
 .week-results{
   border: 1px solid black;
   margin: 5px;
+  box-shadow: 8px 8px 6px -6px black;
 }
 
 .results-container{

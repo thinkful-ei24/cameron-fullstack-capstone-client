@@ -6,6 +6,7 @@
 
 .week-selection-container{
   border: 1px solid black;
+  box-shadow: 8px 8px 6px -6px black;
 }
 .week-selection-container:nth-child(even) h2{
   color: rgba(171, 48, 48, 1);

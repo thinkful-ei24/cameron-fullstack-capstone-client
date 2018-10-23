@@ -4,15 +4,31 @@
 }
 
 .link:hover{
-  background-color: rgba(149, 156, 155, 1);
+  background-color: rgba(149, 156, 155, .5);
 }
 
 h2{
   font-family: 'Marck Script', cursive;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
+}
+
+.expand-collapse-button{
+  background: transparent;
+  border-radius: 50%;
+  border: solid black 1px;
 }
 
 body{
   font-family: 'Kodchasan', sans-serif;
+  font-size: 12px;
+}
+
+@media only screen and (min-width: 640px){
+  h2{
+    font-size: 25px;
+  }
+  body{
+    font-size: 17px;
+  }
 }
