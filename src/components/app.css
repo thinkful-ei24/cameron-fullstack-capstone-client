@@ -24,6 +24,11 @@ body{
   font-size: 12px;
 }
 
+.errorDisplay{
+  color: red;
+  border: 2px solid red;
+}
+
 @media only screen and (min-width: 640px){
   h2{
     font-size: 25px;

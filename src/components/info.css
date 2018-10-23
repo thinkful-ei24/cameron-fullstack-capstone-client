@@ -1,0 +1,52 @@
+.info h2{
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.info{
+  margin-top: 20px;
+  border: 2px solid black;
+  box-shadow: 8px 8px 6px -6px black;
+}
+
+.info h3{
+  font-size: 12px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.info h4{
+  text-align: left;
+  font-weight: bold;
+  font-size: 10px;
+}
+.instructions{
+  border: 1px solid black;
+  margin: 5px;
+  text-align: left;
+}
+
+li{
+  margin: 5px;
+}
+
+li:before{
+  content: '\2665';
+  color:  rgba(171, 48, 48, 1);
+  margin-right: 2px;
+}
+
+@media only screen and (min-width: 640px){
+  .info h2{
+    font-size: 30px;
+  }
+
+  .info h3{
+    font-size: 20px;
+  }
+
+  .info h4{
+    font-size: 17px;
+  }
+}

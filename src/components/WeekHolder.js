@@ -48,7 +48,7 @@ export class WeekHolder extends React.Component {
   errorDisplay() {
     if (this.props.error) {
       return (
-        <div className='errorDisplay'>{this.props.error.message}</div>
+        <div className='errorDisplay' aria-live='assertive'>{this.props.error.message}</div>
       )
     }
   }
