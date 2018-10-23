@@ -21,6 +21,8 @@ input, .submit-user{
 .submit-user{
   margin-top: 10px;
   border-radius: 10%;
+  font-size: 15px;
+  font-family: 'Kodchasan', sans-serif;
 }
 .submit-user:hover{
   background-color: rgba(171, 48, 48, 1);

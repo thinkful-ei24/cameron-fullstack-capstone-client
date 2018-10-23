@@ -1,0 +1,10 @@
+.submit-guesses{
+  margin-top: 10px;
+  border-radius: 10%;
+  font-size: 15px;
+  font-family: 'Kodchasan', sans-serif;
+}
+
+.submit-guesses:hover{
+  background-color: rgba(171, 48, 48, 1);
+}

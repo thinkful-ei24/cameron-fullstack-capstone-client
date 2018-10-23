@@ -5,6 +5,8 @@ import WeekSelection from './WeekSelection';
 import { submitGuesses, getSelection } from '../actions/selection-actions';
 import requiresLogin from './requires-login';
 
+import './week-holder.css';
+
 export class WeekHolder extends React.Component {
   componentWillMount() {
     this.props.dispatch(getSelection(this.props.jwt));
@@ -65,7 +67,7 @@ export class WeekHolder extends React.Component {
       <main role='main'>
         {this.errorDisplay()}
         {this.renderReact()}
-        <button disabled={!this.conditionsMet()} onClick={(e) => this.handleSubmit(e)}>Submit</button>
+        <button className='submit-guesses' disabled={!this.conditionsMet()} onClick={(e) => this.handleSubmit(e)}>Submit</button>
       </main>
     )
   }

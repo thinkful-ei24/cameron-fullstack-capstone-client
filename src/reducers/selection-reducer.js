@@ -8,6 +8,8 @@ import {FETCH_CONTESTANTS_REQUEST,
   GET_STATUS_SUCCESS,
   CLEAR_ERROR} from '../actions/selection-actions';
 
+  import {addSelection, deleteChoice} from '../actions/choices';
+
 import {FETCH_RESULTS_SUCCESS, FETCH_RESULTS_ERROR} from '../actions/results-actions';
 import {FETCH_LEADERBOARD_SUCCESS} from '../actions/leaderboard-actions'; 
 
@@ -30,17 +32,9 @@ const initialState = {
   results: {week1:{}, week2:{}, week3:{}, week4:{}, week5:{},
     week6:{}, week7:{}, week8:{}, week9:{}, week10:{}},
   scores: Array(10).fill(''),
-  leaderboard: null  
+  leaderboard: null,
+  fullWeeks: []  
 }; 
-
-const fixDelete = (state, contestant, week)=>{
-  let newObj = {}
-  for (let i=week; i<=10; i++){
-    let weekName = `week${i}`
-    newObj[weekName] = state[`week${i}`].filter(person => person!==contestant);
-  }
-  return newObj;
-}  
 
 export default function(state = initialState, action){
   switch(action.type){
@@ -63,14 +57,12 @@ export default function(state = initialState, action){
     case ADD_SELECTION:
       if(action.contestant){
         const i = action.week;
-        const newWeek = `week${i}`;
-        return Object.assign({}, state, {
-          [newWeek]: [...state[newWeek], action.contestant]
-        });
+        const newObj = addSelection(state, action.contestant, i);
+        return Object.assign({}, state, newObj);
       }
       return state;
     case DELETE_SELECTION:
-      const newObj = fixDelete(state, action.contestant, action.week);
+      const newObj = deleteChoice(state, action.contestant, action.week);
       return Object.assign({}, state, newObj);
     case SUBMIT_GUESSES_SUCCESS:
       return Object.assign({}, state, {
