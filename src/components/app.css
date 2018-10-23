@@ -27,7 +27,6 @@ h2{
 body{
   font-family: 'Kodchasan', sans-serif;
   font-size: 12px;
-  background: linear-gradient(to bottom right, rgba(171, 48, 48, .33), white )
 }
 
 .errorDisplay{
