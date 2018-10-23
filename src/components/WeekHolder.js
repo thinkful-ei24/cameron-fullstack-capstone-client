@@ -62,11 +62,11 @@ export class WeekHolder extends React.Component {
       return <div>Loading...</div>
     }
     return (
-      <div>
+      <main role='main'>
         {this.errorDisplay()}
         {this.renderReact()}
         <button disabled={!this.conditionsMet()} onClick={(e) => this.handleSubmit(e)}>Submit</button>
-      </div>
+      </main>
     )
   }
 }

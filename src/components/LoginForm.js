@@ -43,20 +43,20 @@ export class LoginForm extends React.Component{
       return <Redirect to='/selection' />;
     }
     return(
-      <div>
+      <main role='main'>
         <form className='login-form' onSubmit={(e) => this.handleSubmit(e) }>
           {this.errorDisplay()}
           <label htmlFor='username'>Username:</label>
           <input type='text' name='username' id='username'
             onChange={e => this.customValidity(e.target)} />
           <label htmlFor='password'>Password:</label>
-          <input type='text' name='password' id='password'
+          <input type='password' name='password' id='password'
             onChange={e => this.customValidity(e.target)}/>
           <button className='submit-user' type='submit'>Login</button>
         </form>
         <div>Don't have an account? <Link className='link' to='/signup'>Sign up now!</Link></div>
 
-      </div>
+      </main>
     )
   }
 

@@ -8,6 +8,8 @@
   margin-top: 20px;
   border: 2px solid black;
   box-shadow: 8px 8px 6px -6px black;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .info h3{

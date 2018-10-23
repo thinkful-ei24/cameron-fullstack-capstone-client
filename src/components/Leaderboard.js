@@ -49,18 +49,18 @@ export class Leaderboard extends React.Component {
   render() {
     if (!this.props.leaderboard) {
       return (
-        <div>
+        <main role='main'>
           <div>Sorry, leaderboard results are not available at this time</div>
           <Link to='/results' >Back to your results</Link>
-        </div>)
+        </main>)
     }
     return (
-      <div>
+      <main role='main'>
         <Link className='link' to='/results' >Back to your results</Link>
         <div className='leaderboard'>
           {this.renderReact()}
         </div>
-      </div>
+      </main>
     );
   }
 };

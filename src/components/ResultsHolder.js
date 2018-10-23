@@ -35,11 +35,11 @@ export class ResultsHolder extends React.Component{
       return <div>Loading...</div>
     }
     return(
-      <div>
+      <main role='main'>
         <Link className='link' to='/results/leaderboard'>See the leaderboard!</Link>
         {this.errorDisplay()}
         {this.renderReact()}
-      </div>
+      </main>
     );
   }
 }
