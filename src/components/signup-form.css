@@ -9,17 +9,6 @@
   margin-right: auto;
 }
 
-input, .submit-user{
-  border: 1px solid black;
-}
-
-.submit-user{
-  margin-top: 10px;
-  border-radius: 10%;
-}
-.submit-user:hover{
-  background-color: rgba(171, 48, 48, 1);
-}
 
 @media only screen and (min-width: 640px){
   .signup-form{

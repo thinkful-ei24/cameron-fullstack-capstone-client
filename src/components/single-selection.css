@@ -1,0 +1,30 @@
+.single-selection{
+  display: grid;
+  border: 1px solid black;
+  border-radius: 5%;
+}
+
+.single-selection h3{
+  grid-column: 5/8;
+  grid-row: 5/8;
+}
+
+.delete-button{
+  grid-column: 11/12;
+  grid-row: 1/2;
+  background-color:Transparent;
+  border: none;
+}
+
+.delete-button:hover{
+  color: white;
+  background-color: black;
+}
+
+.single-selection:nth-child(even){
+  background-color: rgba(171, 48, 48, 0.33);
+}
+
+.single-selection:nth-child(odd){
+  background-color: rgba(149, 156, 155, 0.33);
+}

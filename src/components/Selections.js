@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import SingleSelection from './SingleSeleciton';
+import './selection.css';
 
 export class Selections extends React.Component{
   renderReact(){
@@ -12,7 +13,7 @@ export class Selections extends React.Component{
   }
   render(){
     return(
-      <div>
+      <div className='selection'>
         {this.renderReact()}
       </div>
     )

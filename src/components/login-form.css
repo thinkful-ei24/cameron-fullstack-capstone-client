@@ -9,6 +9,10 @@
   margin-right: auto;
 }
 
+input{
+  height: 20px;
+  font-size: 15px;
+}
 input, .submit-user{
   border: 1px solid black;
 }

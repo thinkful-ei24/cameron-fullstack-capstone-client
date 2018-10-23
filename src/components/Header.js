@@ -19,7 +19,7 @@ export class HeaderBar extends React.Component {
         className='close-button'
         aria-label='Close info'
         onClick={() => this.props.dispatch(toggleInfoDisplay())}>
-        X
+          <i className="fa fa-times-circle" aria-label='close info window'></i>
       </button>
       );
     }

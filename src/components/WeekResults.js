@@ -27,14 +27,14 @@ export default class WeekResults extends React.Component{
     if(this.state.expanded){
       return(
         <div className='week-results'>
-        <ResultsHeader week={this.props.week} button='-' onClick={() => this.expandToggle()}/>
+          <ResultsHeader week={this.props.week} button='-' onClick={() => this.expandToggle()}/>
           <div className='results-container'>{this.renderReact()}</div>  
         </div>
       )
     }
     return (
-      <div className='week-results'>
-      <ResultsHeader week={this.props.week} button='+' onClick={() => this.expandToggle()}/>
+      <div className='week-results' >
+        <ResultsHeader week={this.props.week} button='+' onClick={() => this.expandToggle()}/>
       </div>
     )
   }

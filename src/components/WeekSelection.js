@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import ContestantDropDown from './ContestantDropDown';
 import Selections from './Selections';
 
+import './week-selection.css';
+
 export class WeekSelection extends React.Component{
   constructor(props){
     super(props);
@@ -27,18 +29,26 @@ export class WeekSelection extends React.Component{
   render(){
     if(this.state.expanded){
       return (
-        <div>
-          <h2>{`Week ${this.props.week}`}</h2>
-          <button onClick={() => this.expandToggle()}>-</button>
-          {this.renderReact()}
-          <Selections week={this.props.week} />
+        <div className='week-selection-container'>
+          <div className='week-header'>
+            <h2>{`Week ${this.props.week}`}</h2>
+            <button onClick={() => this.expandToggle()}>
+              <i className="fa fa-minus" aria-label='collapse week'></i>
+            </button>
+          </div>
+          <div className='selection-container'>
+            {this.renderReact()}
+            <Selections week={this.props.week} />
+          </div>
         </div>
       )
     }
     return (
-      <div>
+      <div className='week-header week-selection-container'>
       <h2>{`Week ${this.props.week}`}</h2>
-      <button onClick={() => this.expandToggle()}>+</button>
+      <button onClick={() => this.expandToggle()}>
+        <i className='fa fa-plus' aria-label='expand week results'></i>
+      </button>
     </div>
     )
   }
