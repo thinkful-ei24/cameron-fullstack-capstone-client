@@ -5,6 +5,13 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 ## Table of Contents
 
+
+- A description of your app
+- A link to a deployed version
+- Screenshots of your app
+- A description of your tech stack
+- A brief description of where each of the key parts of the project live in your codebase
+- If your app is meant to be re-used by other developers, instructions on how to get the app up and running
 - [Updating to New Releases](#updating-to-new-releases)
 - [Sending Feedback](#sending-feedback)
 - [Folder Structure](#folder-structure)

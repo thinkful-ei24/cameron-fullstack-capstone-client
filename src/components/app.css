@@ -29,6 +29,10 @@ body{
   font-size: 12px;
 }
 
+.app{
+  max-width: 1000px;
+  margin: 0 auto;
+}
 .errorDisplay{
   color: red;
   border: 2px solid red;
