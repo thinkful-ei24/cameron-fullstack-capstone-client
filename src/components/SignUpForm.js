@@ -22,11 +22,11 @@ export class SignUpForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let password = event.target['password'].value;
-    let username = event.target['username'].value;
+    let password = this.password.current.value;
+    let username = this.username.current.value;
     this.props.dispatch(signup(username, password))
-    event.target['password'].value = '';
-    event.target['username'].value = '';
+    this.password.current.value = '';
+    this.username.current.value = '';
 
   }
   customValidity(event) {
