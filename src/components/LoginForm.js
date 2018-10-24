@@ -8,11 +8,16 @@ import {clearError} from '../actions/auth-actions';
 import './login-form.css';
 
 export class LoginForm extends React.Component{
+  constructor(props){
+    super(props);
+    this.username=React.createRef();
+    this.password=React.createRef();
+  }
   componentDidMount(){
-    const username = document.getElementById('username');
-    const password = document.getElementById('password');
-    this.customValidity(username);
-    this.customValidity(password);
+    // const username = document.getElementById('username');
+    // const password = document.getElementById('password);
+    this.customValidity(this.username);
+    this.customValidity(this.password);
     this.props.dispatch(clearError());
   }
 
@@ -26,12 +31,12 @@ export class LoginForm extends React.Component{
 
   }
   customValidity(event){
-    if (!event.value){
-      event.setCustomValidity('Field is required');
-    } else if (event.value.trim() === ''){
-      event.setCustomValidity('Field cannot be empty string')
+    if (!event.current.value){
+      event.current.setCustomValidity('Field is required');
+    } else if (event.current.value.trim() === ''){
+      event.current.setCustomValidity('Field cannot be empty string')
     } else{
-      event.setCustomValidity('');
+      event.current.setCustomValidity('');
     }
   }
   errorDisplay(){
@@ -50,11 +55,11 @@ export class LoginForm extends React.Component{
         <form className='login-form' onSubmit={(e) => this.handleSubmit(e) }>
           {this.errorDisplay()}
           <label htmlFor='username'>Username:</label>
-          <input type='text' name='username' id='username'
-            onChange={e => this.customValidity(e.target)} />
+          <input type='text' name='username' id='username' ref={this.username}
+            onChange={e => this.customValidity(this.username)} />
           <label htmlFor='password'>Password:</label>
-          <input type='password' name='password' id='password'
-            onChange={e => this.customValidity(e.target)}/>
+          <input type='password' name='password' id='password' ref={this.password}
+            onChange={e => this.customValidity(this.password)}/>
           <button className='submit-user' type='submit'>Login</button>
         </form>
         <div>Don't have an account? <Link className='link' to='/signup'>Sign up now!</Link></div>

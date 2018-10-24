@@ -24,7 +24,7 @@ export class ResultsHeader extends React.Component{
       <div className='results-header'>
         <h2>Week {this.props.week}</h2>
         {this.setScore()}
-        <button className='expand-collapse-button'onClick={() => this.props.onClick()}>{buttonContent}</button>
+        <button className='expand-collapse-button' onClick={() => this.props.onClick()}>{buttonContent}</button>
       </div>
     );
   }

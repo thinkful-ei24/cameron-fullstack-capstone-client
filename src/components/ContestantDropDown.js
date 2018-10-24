@@ -16,7 +16,7 @@ export class ContestantList extends React.Component {
 
   render() {
     return (
-      <select aira-label='choose contesteants' onChange={e => this.props.dispatch(
+      <select aria-label='choose contesteants' onChange={e => this.props.dispatch(
         addSelection(e.target.value, this.props.week))}>
         <option value=''>Choose:</option>
         {this.renderReact()}

@@ -7,13 +7,16 @@ import {clearError} from '../actions/auth-actions';
 
 import './signup-form.css';
 
-export class LoginForm extends React.Component {
+export class SignUpForm extends React.Component {
+  constructor(props){
+    super(props);
+    this.username=React.createRef();
+    this.password=React.createRef();
+  }
 
   componentDidMount() {
-    const username = document.getElementById('username');
-    const password = document.getElementById('password');
-    this.customValidity(username);
-    this.customValidity(password);
+    this.customValidity(this.username);
+    this.customValidity(this.password);
     this.props.dispatch(clearError());
   }
 
@@ -27,18 +30,18 @@ export class LoginForm extends React.Component {
 
   }
   customValidity(event) {
-    if (!event.value) {
-      event.setCustomValidity('Field is required');
-    } else if (event.value.trim() !== event.value) {
-      event.setCustomValidity('Field cannot start or end with whitespace')
-    } else if (event.id === 'password' && event.value.length < 8) {
-      event.setCustomValidity('Password cannot be less than 8 characters')
-    } else if (event.id === 'password' && event.value.length > 72) {
-      event.setCustomValidity('Password cannot be more than 72 characters')
-    } else if (event.id === 'username' && event.value.length < 1) {
-      event.setCustomValidity('Username cannot be less than 2 characters')
+    if (!event.current.value) {
+      event.current.setCustomValidity('Field is required');
+    } else if (event.current.value.trim() !== event.current.value) {
+      event.current.setCustomValidity('Field cannot start or end with whitespace')
+    } else if (event.current.id === 'password' && event.current.value.length < 8) {
+      event.current.setCustomValidity('Password cannot be less than 8 characters')
+    } else if (event.current.id === 'password' && event.current.value.length > 72) {
+      event.current.setCustomValidity('Password cannot be more than 72 characters')
+    } else if (event.current.id === 'username' && event.current.value.length < 1) {
+      event.current.setCustomValidity('Username cannot be less than 2 characters')
     } else {
-      event.setCustomValidity('');
+      event.current.setCustomValidity('');
     }
   }
   errorDisplay() {
@@ -57,11 +60,11 @@ export class LoginForm extends React.Component {
         <form className='signup-form' onSubmit={(e) => this.handleSubmit(e)}>
           {this.errorDisplay()}
           <label htmlFor='username'>Username:</label>
-          <input type='text' name='username' id='username'
-            onChange={e => this.customValidity(e.target)} />
+          <input type='text' name='username' id='username' ref={this.username}
+            onChange={e => this.customValidity(this.username)} />
           <label htmlFor='password'>Password:</label>
-          <input type='password' name='password' id='password'
-            onChange={e => this.customValidity(e.target)} />
+          <input type='password' name='password' id='password' ref={this.password}
+            onChange={e => this.customValidity(this.password)} />
           <button className='submit-user' type='submit'>Sign Up</button>
         </form>
         <div>Already have an account? <Link className='link' to='/'>Log in now!</Link></div>
@@ -78,5 +81,5 @@ const mapStateToProps = (state) => {
   })
 }
 
-export default connect(mapStateToProps)(LoginForm);
+export default connect(mapStateToProps)(SignUpForm);
 
