@@ -21,6 +21,11 @@ describe('<ContestantList/>', () => {
   })
 
   it('Should call callback on selection', () => {
-
+    const wrapper = shallow(<ContestantList week={3} contestants={contestantList}/>);
+    const select = wrapper.find('select');
+    const callback = jest.fn();
+    select.instance.onChange = callback();
+    select.simulate('onChange');
+    expect(callback).toHaveBeenCalled();
   })
 });
