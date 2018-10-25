@@ -76,7 +76,7 @@ export const clearError = () => {
 
 export const getContestants = (jwt) => (dispatch) => {
   dispatch(fetchContestantsRequest());
-  fetch(`${API_BASE_URL}/api/contestants`, {
+  return fetch(`${API_BASE_URL}/api/contestants`, {
     headers: {
       'Authorization': `Bearer ${jwt}`
     }
@@ -89,7 +89,7 @@ export const getContestants = (jwt) => (dispatch) => {
 
 export const getSelection = (jwt) => (dispatch) => {
   dispatch(fetchContestantsRequest());
-  fetch(`${API_BASE_URL}/api/status`, {
+  return fetch(`${API_BASE_URL}/api/status`, {
     headers: {
       'Authorization': `Bearer ${jwt}`
     }
@@ -103,7 +103,7 @@ export const getSelection = (jwt) => (dispatch) => {
 
 export const submitGuesses = (jwt, guesses) => (dispatch, getState) => {
   dispatch(fetchContestantsRequest());
-  fetch(`${API_BASE_URL}/api/guesses`, {
+  return fetch(`${API_BASE_URL}/api/guesses`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',

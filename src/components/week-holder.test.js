@@ -3,6 +3,17 @@ import {shallow, mount} from 'enzyme';
 
 import {WeekHolder} from './WeekHolder';
 
+jest.mock('../actions/selection-actions', () => Object.assign({},
+  require.requireActual('../actions/selection-actions'),
+  {
+    getSelection: jest.fn().mockImplementation((jwt) => {
+      return {
+        type: 'GET_SELECTION',
+        jwt
+      }
+    })
+  }));
+
 describe('<WeekHolder/>', () => {
   const dispatch=jest.fn();
   const week1=['Alex', 'Blake', 'Garrett', 'Colton', 'Jake', 'Chris', 'Jean Blanc', 'Jason', 'Ryan', 'Christian', 'Christon', 'David', 'Jordan', 'Kamil', 'Leo', 'Trent', 'Wills', 'John', 'Joe', 'Chase', 'Clay'];
@@ -57,5 +68,15 @@ describe('<WeekHolder/>', () => {
       week5={week5} week6={week6} week7={week7} week8={week8} week9={week9} week10={week10} />);
     const submit = wrapper.find('.submit-guesses');
     expect(submit.prop('disabled')).toBe(false);  
+  });
+
+  it('dispatches getSelection on load', () => {
+    const jwt = 'asdfljdafsadfj';
+    const wrapper = shallow(<WeekHolder dispatch={dispatch} week1={week1} week2={week2} week3={week3} week4={week4}
+      week5={week5} week6={week6} week7={week7} week8={week8} week9={week9} week10={week10} jwt={jwt}/>);
+    expect(dispatch).toHaveBeenCalledWith({
+      type: 'GET_SELECTION',
+      jwt
+    });
   });
 });  

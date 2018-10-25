@@ -3,8 +3,10 @@ import {
   FETCH_CONTESTANTS_ERROR, fetchContestantsError, ADD_SELECTION, addSelection,
   DELETE_SELECTION, deleteSelection, SUBMIT_GUESSES_SUCCESS, submitGuessesSuccess,
   SUBMIT_GUESSES_ERROR, submitGuessesError, GET_STATUS_SUCCESS, getStatusSuccess,
-  CLEAR_ERROR, clearError
+  CLEAR_ERROR, clearError, getContestants, getSelection
 } from './selection-actions';
+
+import { API_BASE_URL } from '../config';
 
 describe('fetchContestantsRequest', () => {
   it('Should return the action', () => {
@@ -106,3 +108,29 @@ describe('clearError', () => {
     });
   });
 });
+
+// describe('getSelection', () => {
+//   it('Should dispatch getSelection request and success on good request', () => {
+//     const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoidXNlcm5hbWUifSwiaWF0IjoxNTQwNDk2NDU5LCJleHAiOjE1NDExMDEyNTksInN1YiI6InVzZXJuYW1lIn0.gm_S1JMedhYtCf1RAg83_ojZ39ZtgX_trLQE7Os1Ar4';
+//     global.fetch = jest.fn().mockImplementation(() =>
+//       Promise.resolve({
+//         ok: true,
+//         json() {
+//           return { status: 'choosing' };
+//         }
+//       })
+//     );
+//     const dispatch = jest.fn();
+//     return getSelection(jwt)(dispatch).then(() => {
+//       expect(dispatch).toHaveBeenCalledWith(fetchContestantsRequest());
+//       expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/api/status`, {
+//         headers: {
+//           'Authorization': `Bearer ${jwt}`
+//         }
+//       });
+//       expect(dispatch).toHaveBeenCalledWith(getStatusSuccess(jwt));
+//       // expect(dispatch).toHaveBeenCalledWith(getContestants(jwt));
+//     })
+//   })
+// });
+

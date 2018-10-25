@@ -4,6 +4,20 @@ import {shallow, mount} from 'enzyme';
 import {SignUpForm} from './SignUpForm';
 import {BrowserRouter} from 'react-router-dom';
 
+import {clearError} from '../actions/auth-actions';
+
+jest.mock('../actions/signup-actions', () => Object.assign({},
+  require.requireActual('../actions/signup-actions'),
+  {
+    signup: jest.fn().mockImplementation((username, password) => {
+      return {
+        type: 'SIGNUP',
+        username,
+        password
+      }
+    })
+  }));
+
 describe('<SignUpForm/>', () => {
   const dispatch=jest.fn();
   it('Should render without crashing', () => {
@@ -29,4 +43,24 @@ describe('<SignUpForm/>', () => {
     const wrapper = mount(<BrowserRouter><SignUpForm error={null} loggedIn={false} dispatch={dispatch}/></BrowserRouter>);
     expect(wrapper.find('.errorDisplay')).toHaveLength(0);
   });
+
+  it('dispatches clearError on load', () => {
+    const wrapper = mount(<BrowserRouter><SignUpForm error={null} loggedIn={false} dispatch={dispatch} /></BrowserRouter>);
+    expect(dispatch).toHaveBeenCalledWith(clearError());
+  });
+
+  // it('dispatches signup on submit', () => {
+  //   const wrapper = mount(<BrowserRouter><SignUpForm error={null} loggedIn={false} dispatch={dispatch} /></BrowserRouter>);
+  //   const form = wrapper.find('form');
+  //   const username = 'username';
+  //   const password = 'password';
+  //   wrapper.find('#username').instance.value = username;
+  //   wrapper.find('#password').instance.value = password;
+  //   form.simulate('submit');
+  //   expect(dispatch).toHaveBeenCalledWith({
+  //     type: 'SIGNUP',
+  //     username,
+  //     password
+  //   });
+  // });
 });  

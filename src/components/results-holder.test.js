@@ -1,7 +1,19 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import {BrowserRouter} from 'react-router-dom';
 
 import { ResultsHolder } from './ResultsHolder';
+
+
+jest.mock('../actions/results-actions', () => Object.assign({},
+  require.requireActual('../actions/results-actions'),
+  {
+    getResults: jest.fn().mockImplementation((username, password) => {
+      return {
+        type: 'GET_RESULTS'
+      }
+    })
+  }));
 
 describe('<ResultsHolder/>', () => {
   const dispatch = jest.fn();
@@ -26,5 +38,12 @@ describe('<ResultsHolder/>', () => {
     const errorDisplay = wrapper.find('.errorDisplay');
     expect(errorDisplay).toHaveLength(1); 
     expect(errorDisplay.text()).toEqual(error.message);
+  });
+
+  it('dispatches getResults on load', () => {
+    const wrapper = shallow(<BrowserRouter><ResultsHolder dispatch={dispatch} results={results} /></BrowserRouter>);
+    expect(dispatch).toHaveBeenCalledWith({
+      type: 'GET_RESULTS'
+    });
   });
 });  

@@ -2,7 +2,7 @@ import React from 'react';
 import {shallow, render, mount} from 'enzyme';
 
 import {HeaderBar} from './Header';
-import {toggleInfoDisplay, clearAuth} from '../actions/auth-actions';
+import {toggleInfoDisplay} from '../actions/auth-actions';
 
 describe('<HeaderBar/>', () => {
   it('Renders without crashing', () => {
@@ -39,6 +39,22 @@ describe('<HeaderBar/>', () => {
     logout.instance.onClick = callback();
     logout.simulate('click');
     expect(callback).toHaveBeenCalled();
+  });
+
+  it('Dispatches toggleInfoDisplay on click', () => {
+    const dispatch = jest.fn();
+    const wrapper = mount(<HeaderBar loggedIn={true} infoDisplay={false} dispatch={dispatch}/>);
+    const infoButton = wrapper.find('.info-button');
+    infoButton.simulate('click');
+    expect(dispatch).toHaveBeenCalledWith(toggleInfoDisplay());
+  });
+
+  it('Dispatches toggleInfoDisplay on click', () => {
+    const dispatch = jest.fn();
+    const wrapper = mount(<HeaderBar loggedIn={true} infoDisplay={true} dispatch={dispatch}/>);
+    const closeButton = wrapper.find('.close-button');
+    closeButton.simulate('click');
+    expect(dispatch).toHaveBeenCalledWith(toggleInfoDisplay());
   });
 
 });

@@ -20,7 +20,7 @@ export const fetchResultsError = (error) => {
 
 export const fetchResults = (authToken) => (dispatch, getState) => {
   dispatch(fetchContestantsRequest());
-  fetch(`${API_BASE_URL}/api/results`, {
+  return fetch(`${API_BASE_URL}/api/results`, {
     method: 'GET',
     headers: {
       // Provide our auth token as credentials
@@ -36,7 +36,7 @@ export const fetchResults = (authToken) => (dispatch, getState) => {
 export const getResults = () => (dispatch, getState) => {
   const authToken = getState().authReducer.authToken;
   dispatch(fetchContestantsRequest());
-  fetch(`${API_BASE_URL}/api/status`, {
+  return fetch(`${API_BASE_URL}/api/status`, {
     headers: {
       'Authorization': `Bearer ${authToken}`
     }
