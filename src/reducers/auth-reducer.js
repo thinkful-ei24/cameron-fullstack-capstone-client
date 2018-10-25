@@ -26,14 +26,12 @@ export default function(state = initialState, action){
     case AUTH_REQUEST:
       return Object.assign({}, state, {
         loading: true,
-        error: null,
-        status: null
+        error: null
       });
     case AUTH_SUCCESS:
       return Object.assign({}, state, {
         loading: false,
-        currentUser: action.currentUser, 
-        status: action.status
+        currentUser: action.currentUser
       });
     case AUTH_ERROR:
       return Object.assign({}, state, {

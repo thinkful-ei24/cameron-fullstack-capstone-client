@@ -1,6 +1,8 @@
 import React from 'react';
 import {shallow, render, mount} from 'enzyme';
 
+import {addSelection} from '../actions/selection-actions';
+
 import {ContestantList} from './ContestantDropDown';
 
 describe('<ContestantList/>', () => {
@@ -20,12 +22,12 @@ describe('<ContestantList/>', () => {
     });
   })
 
-  it('Should call callback on selection', () => {
-    const wrapper = shallow(<ContestantList week={3} contestants={contestantList}/>);
+  it('Should dispatch on selection', () => {
+    const dispatch=jest.fn();
+    const value = 'Blake';
+    const wrapper = mount(<ContestantList week={3} contestants={contestantList} dispatch={dispatch}/>);
     const select = wrapper.find('select');
-    const callback = jest.fn();
-    select.instance.onChange = callback();
-    select.simulate('onChange');
-    expect(callback).toHaveBeenCalled();
+    select.simulate('change', {target: {value: value}});
+    expect(dispatch).toHaveBeenCalledWith(addSelection(value, 3));
   })
 });
