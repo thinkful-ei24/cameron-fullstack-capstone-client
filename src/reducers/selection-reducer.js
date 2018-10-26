@@ -6,7 +6,8 @@ import {FETCH_CONTESTANTS_REQUEST,
   SUBMIT_GUESSES_SUCCESS,
   SUBMIT_GUESSES_ERROR,
   GET_STATUS_SUCCESS,
-  CLEAR_ERROR} from '../actions/selection-actions';
+  CLEAR_ERROR, 
+  CLEAR_GUESSES} from '../actions/selection-actions';
 
   import {addSelection, deleteChoice} from '../actions/choices';
 
@@ -67,7 +68,18 @@ export default function(state = initialState, action){
     case SUBMIT_GUESSES_SUCCESS:
       return Object.assign({}, state, {
         loading: false,
-        status: action.status
+        status: action.status,
+        week1: [],
+        week2: [],
+        week3: [],
+        week4: [],
+        week5: [],
+        week6: [],
+        week7: [],
+        week8: [],
+        week9: [],
+        week10: [],
+        fullWeeks: []
       });
     case SUBMIT_GUESSES_ERROR:
       return Object.assign({}, state, {
@@ -99,7 +111,9 @@ export default function(state = initialState, action){
       return Object.assign({}, state, {
         loading: false,
         leaderboard: action.leaderboard
-      });            
+      }); 
+    case CLEAR_GUESSES:
+      return Object.assign({}, state, initialState);             
     default:
       return state  
   }

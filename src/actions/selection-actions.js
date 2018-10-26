@@ -74,6 +74,13 @@ export const clearError = () => {
   })
 }
 
+export const CLEAR_GUESSES = 'CLEAR_GUESSES';
+export const clearGuesses = () => {
+  return ({
+    type: CLEAR_GUESSES
+  })
+}
+
 export const getContestants = (jwt) => (dispatch) => {
   dispatch(fetchContestantsRequest());
   return fetch(`${API_BASE_URL}/api/contestants`, {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { clearAuth, toggleInfoDisplay } from '../actions/auth-actions';
+import {clearGuesses} from '../actions/selection-actions';
 import { clearAuthToken } from '../local-storage';
 
 
@@ -10,6 +11,7 @@ export class HeaderBar extends React.Component {
 
   logOut() {
     this.props.dispatch(clearAuth());
+    this.props.dispatch(clearGuesses())
     clearAuthToken();
   }
   infoButton() {
