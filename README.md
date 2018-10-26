@@ -30,6 +30,28 @@ Additionally, here is a link to the [server-side repository](https://github.com/
 
 ## App Screenshots
 ![login page](public/images/login-page.png)
+Login Page
+
+![info page](public/images/info-page.png)
+Info Page
+
+![selection page collapsed](public/images/selection-page.png)
+Selection Page with Weeks Collapsed
+
+![selection page expanded](public/images/open-selection-page.png)
+Selection Page with Week Expanded
+
+![selection page ready to subit](public/images/ready-to-submit.png)
+Complete Selection Page that's Ready to Submit
+
+![results page collapsed](public/images/results-collapsed.png)
+Results Page with Weeks Collapsed
+
+![results page expanded](public/images/results-expanded.png)
+Results Page with Week Expanded
+
+![leaderboard](public/images/leaderboard.png)
+Leaderboard
 
 ## Tech Stack Description
 The frontend of the app uses React and Redux.
