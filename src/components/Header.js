@@ -18,6 +18,7 @@ export class HeaderBar extends React.Component {
         <button
         className='close-button'
         aria-label='Close info'
+        title='Close'
         onClick={() => this.props.dispatch(toggleInfoDisplay())}>
           <i className="fa fa-times-circle" aria-label='close info window'></i>
       </button>
@@ -40,7 +41,8 @@ export class HeaderBar extends React.Component {
       logOutButton = (
         <button 
         className='logout'
-        aria-label='Log out' 
+        aria-label='Log out'
+        title='Log out' 
         onClick={() => this.logOut()}>
           <i className="fas fa-sign-out-alt"></i>
         </button>

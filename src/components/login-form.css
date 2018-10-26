@@ -26,6 +26,7 @@ input, .submit-user{
 }
 .submit-user:hover{
   background-color: rgba(171, 48, 48, 1);
+  color: white;
 }
 
 @media only screen and (min-width: 640px){
