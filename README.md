@@ -29,6 +29,7 @@ The deployed version of this app can be found [here](https://cryptic-bayou-79108
 Additionally, here is a link to the [server-side repository](https://github.com/thinkful-ei24/cameron-fullstack-capstone-server)
 
 ## App Screenshots
+![login page](/images/login-page.png)
 
 ## Tech Stack Description
 The frontend of the app uses React and Redux.
