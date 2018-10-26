@@ -5,6 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - [App Description](#app-description)
 - [Link to deployed version](#deployed-version)
+- [Demo user accounts](#demo-accounts)
 - [App Screenshots](#app-screenshots)
 - [Tech Stack Description](#tech-stack-description)
 - [Key Parts in the Codebase](#key-parts-in-the-codebase)
@@ -28,30 +29,39 @@ The deployed version of this app can be found [here](https://cryptic-bayou-79108
 
 Additionally, here is a link to the [server-side repository](https://github.com/thinkful-ei24/cameron-fullstack-capstone-server)
 
+## Demo Accounts
+There are two demo accounts:
+- To try out the selection process:
+  - username: demoSelection
+  - password: password123
+- To try out the results page, either submit the above or log in with this account
+  - username: demoResults
+  - password: password123  
+
 ## App Screenshots
 ![login page](public/images/login-page.png)
-Login Page
+**Login Page**
 
 ![info page](public/images/info-page.png)
-Info Page
+**Info Page**
 
 ![selection page collapsed](public/images/selection-page.png)
-Selection Page with Weeks Collapsed
+**Selection Page with Weeks Collapsed**
 
 ![selection page expanded](public/images/open-selection-page.png)
-Selection Page with Week Expanded
+**Selection Page with Week Expanded**
 
 ![selection page ready to subit](public/images/ready-to-submit.png)
-Complete Selection Page that's Ready to Submit
+**Complete Selection Page that's Ready to Submit**
 
 ![results page collapsed](public/images/results-collapsed.png)
-Results Page with Weeks Collapsed
+**Results Page with Weeks Collapsed**
 
 ![results page expanded](public/images/results-expanded.png)
-Results Page with Week Expanded
+**Results Page with Week Expanded**
 
 ![leaderboard](public/images/leaderboard.png)
-Leaderboard
+**Leaderboard**
 
 ## Tech Stack Description
 The frontend of the app uses React and Redux.
