@@ -27,6 +27,7 @@ export class HeaderBar extends React.Component {
       <button
         className='info-button'
         aria-label='More info'
+        title='More info'
         onClick={() => this.props.dispatch(toggleInfoDisplay())}>
           <i className="far fa-question-circle"></i>
       </button>

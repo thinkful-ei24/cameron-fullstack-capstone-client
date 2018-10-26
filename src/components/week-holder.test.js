@@ -11,7 +11,14 @@ jest.mock('../actions/selection-actions', () => Object.assign({},
         type: 'GET_SELECTION',
         jwt
       }
-    })
+    }),
+    submitGuesses: jest.fn().mockImplementation((jwt,guesses) => {
+      return {
+        type: 'SUBMIT_GUESSES',
+        jwt,
+        guesses
+      }
+    }),
   }));
 
 describe('<WeekHolder/>', () => {
@@ -68,6 +75,20 @@ describe('<WeekHolder/>', () => {
       week5={week5} week6={week6} week7={week7} week8={week8} week9={week9} week10={week10} />);
     const submit = wrapper.find('.submit-guesses');
     expect(submit.prop('disabled')).toBe(false);  
+  });
+
+  it('dispatches submitGuesses on submit', () => {
+    const jwt = 'asdfljdafsadfj';
+    const guesses = {week1, week2, week3, week4, week5, week6, week7, week8, week9, week10}
+    const wrapper = shallow(<WeekHolder dispatch={dispatch} week1={week1} week2={week2} week3={week3} week4={week4}
+      week5={week5} week6={week6} week7={week7} week8={week8} week9={week9} week10={week10} jwt={jwt}/>);
+    const submit = wrapper.find('.submit-guesses');
+    submit.simulate('click');  
+      expect(dispatch).toHaveBeenCalledWith({
+      type: 'SUBMIT_GUESSES',
+      jwt,
+      guesses
+    });
   });
 
   it('dispatches getSelection on load', () => {

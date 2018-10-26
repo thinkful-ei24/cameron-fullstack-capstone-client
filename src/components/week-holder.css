@@ -7,8 +7,11 @@
 
 .submit-guesses:hover{
   background-color: rgba(171, 48, 48, 1);
+  color: white
 }
-
+.submit-guesses{
+  padding: 15px 20px;
+}
 .selection-instructions{
   font-weight: bold;
   margin-top: 5px;

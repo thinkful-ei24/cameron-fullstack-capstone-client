@@ -49,18 +49,18 @@ describe('<LoginForm/>', () => {
     });
   });
 
-  // it('dispatches login on submit', () => {
-  //   const wrapper = mount(<BrowserRouter><LoginForm error={null} loggedIn={false} dispatch={dispatch} /></BrowserRouter>);
-  //   const form = wrapper.find('form');
-  //   const username = 'username';
-  //   const password = 'password';
-  //   wrapper.find('#username').instance.value = username;
-  //   wrapper.find('#password').instance.value = password;
-  //   form.simulate('submit');
-  //   expect(dispatch).toHaveBeenCalledWith({
-  //     type: 'LOGIN',
-  //     username,
-  //     password
-  //   });
-  // });
+  it('dispatches login on submit', () => {
+    const wrapper = mount(<BrowserRouter><LoginForm error={null} loggedIn={false} dispatch={dispatch} /></BrowserRouter>);
+    const form = wrapper.find('form');
+    const username = 'username';
+    const password = 'password';
+    wrapper.find('#username').instance().value = username;
+    wrapper.find('#password').instance().value = password;
+    form.simulate('submit');
+    expect(dispatch).toHaveBeenCalledWith({
+      type: 'LOGIN',
+      username,
+      password
+    });
+  });
 });  

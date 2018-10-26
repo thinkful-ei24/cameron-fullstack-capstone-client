@@ -3,7 +3,7 @@ import {
   FETCH_CONTESTANTS_ERROR, fetchContestantsError, ADD_SELECTION, addSelection,
   DELETE_SELECTION, deleteSelection, SUBMIT_GUESSES_SUCCESS, submitGuessesSuccess,
   SUBMIT_GUESSES_ERROR, submitGuessesError, GET_STATUS_SUCCESS, getStatusSuccess,
-  CLEAR_ERROR, clearError, getContestants, getSelection
+  CLEAR_ERROR, clearError, getContestants, getSelection, submitGuesses
 } from './selection-actions';
 
 import { API_BASE_URL } from '../config';
@@ -109,28 +109,83 @@ describe('clearError', () => {
   });
 });
 
-// describe('getSelection', () => {
-//   it('Should dispatch getSelection request and success on good request', () => {
-//     const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoidXNlcm5hbWUifSwiaWF0IjoxNTQwNDk2NDU5LCJleHAiOjE1NDExMDEyNTksInN1YiI6InVzZXJuYW1lIn0.gm_S1JMedhYtCf1RAg83_ojZ39ZtgX_trLQE7Os1Ar4';
-//     global.fetch = jest.fn().mockImplementation(() =>
-//       Promise.resolve({
-//         ok: true,
-//         json() {
-//           return { status: 'choosing' };
-//         }
-//       })
-//     );
-//     const dispatch = jest.fn();
-//     return getSelection(jwt)(dispatch).then(() => {
-//       expect(dispatch).toHaveBeenCalledWith(fetchContestantsRequest());
-//       expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/api/status`, {
-//         headers: {
-//           'Authorization': `Bearer ${jwt}`
-//         }
-//       });
-//       expect(dispatch).toHaveBeenCalledWith(getStatusSuccess(jwt));
-//       // expect(dispatch).toHaveBeenCalledWith(getContestants(jwt));
-//     })
-//   })
-// });
+describe('getSelection', () => {
+  it('Should dispatch getSelection request and success on good request', () => {
+    const status = 'choosing';
+    const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoidXNlcm5hbWUifSwiaWF0IjoxNTQwNDk2NDU5LCJleHAiOjE1NDExMDEyNTksInN1YiI6InVzZXJuYW1lIn0.gm_S1JMedhYtCf1RAg83_ojZ39ZtgX_trLQE7Os1Ar4';
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        ok: true,
+        json() {
+          return { status };
+        }
+      })
+    );
+    const dispatch = jest.fn();
+    return getSelection(jwt)(dispatch).then(() => {
+      expect(dispatch).toHaveBeenCalledWith(fetchContestantsRequest());
+      expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/api/status`, {
+        headers: {
+          'Authorization': `Bearer ${jwt}`
+        }
+      });
+      expect(dispatch).toHaveBeenCalledWith(getStatusSuccess({status}));
+    })
+  })
+});
+
+describe('getContestants', () => {
+  it('Should dispatch getContestants request and success on good request', () => {
+    const results = ['bob', 'joe'];
+    const status = 'choosing';
+    const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoidXNlcm5hbWUifSwiaWF0IjoxNTQwNDk2NDU5LCJleHAiOjE1NDExMDEyNTksInN1YiI6InVzZXJuYW1lIn0.gm_S1JMedhYtCf1RAg83_ojZ39ZtgX_trLQE7Os1Ar4';
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        ok: true,
+        json() {
+          return { results, status };
+        }
+      })
+    );
+    const dispatch = jest.fn();
+    return getContestants(jwt)(dispatch).then(() => {
+      expect(dispatch).toHaveBeenCalledWith(fetchContestantsRequest());
+      expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/api/contestants`, {
+        headers: {
+          'Authorization': `Bearer ${jwt}`
+        }
+      });
+      expect(dispatch).toHaveBeenCalledWith(fetchContestantsSuccess(results, status));
+    })
+  })
+});
+
+describe('submitGuesses', () => {
+  it('Should dispatch submitGuesses request and success on good request', () => {
+    const guesses = ['bob', 'joe'];
+    const status = 'results';
+    const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJuYW1lIjoidXNlcm5hbWUifSwiaWF0IjoxNTQwNDk2NDU5LCJleHAiOjE1NDExMDEyNTksInN1YiI6InVzZXJuYW1lIn0.gm_S1JMedhYtCf1RAg83_ojZ39ZtgX_trLQE7Os1Ar4';
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        ok: true,
+        json() {
+          return { guesses, status };
+        }
+      })
+    );
+    const dispatch = jest.fn();
+    return submitGuesses(jwt, guesses)(dispatch).then(() => {
+      expect(dispatch).toHaveBeenCalledWith(fetchContestantsRequest());
+      expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/api/guesses`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          'Authorization': `Bearer ${jwt}`
+        },
+        body: JSON.stringify(guesses)
+      });
+      expect(dispatch).toHaveBeenCalledWith(submitGuessesSuccess(status));
+    })
+  })
+});
 

@@ -49,18 +49,18 @@ describe('<SignUpForm/>', () => {
     expect(dispatch).toHaveBeenCalledWith(clearError());
   });
 
-  // it('dispatches signup on submit', () => {
-  //   const wrapper = mount(<BrowserRouter><SignUpForm error={null} loggedIn={false} dispatch={dispatch} /></BrowserRouter>);
-  //   const form = wrapper.find('form');
-  //   const username = 'username';
-  //   const password = 'password';
-  //   wrapper.find('#username').instance.value = username;
-  //   wrapper.find('#password').instance.value = password;
-  //   form.simulate('submit');
-  //   expect(dispatch).toHaveBeenCalledWith({
-  //     type: 'SIGNUP',
-  //     username,
-  //     password
-  //   });
-  // });
+  it('dispatches signup on submit', () => {
+    const wrapper = mount(<BrowserRouter><SignUpForm error={null} loggedIn={false} dispatch={dispatch} /></BrowserRouter>);
+    const form = wrapper.find('form');
+    const username = 'username';
+    const password = 'password';
+    wrapper.find('#username').instance().value = username;
+    wrapper.find('#password').instance().value = password;
+    form.simulate('submit');
+    expect(dispatch).toHaveBeenCalledWith({
+      type: 'SIGNUP',
+      username,
+      password
+    });
+  });
 });  

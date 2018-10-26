@@ -26,10 +26,17 @@ export class WeekSelection extends React.Component{
       )
     }
   }
+  fullWeeks(){
+    if(this.props.weekLength === this.remainingContestants[this.props.week-1]){
+      return (
+        'full-week'
+      )
+    }
+  }
   render(){
     if(this.state.expanded){
       return (
-        <div className='week-selection-container'>
+        <div className={`week-selection-container ${this.fullWeeks()}`}>
           <div className='week-header'>
             <h2>{`Week ${this.props.week}`}</h2>
             <button className='expand-collapse-button' onClick={() => this.expandToggle()}>
@@ -44,7 +51,7 @@ export class WeekSelection extends React.Component{
       )
     }
     return (
-      <div className='week-header week-selection-container'>
+      <div className={`week-header week-selection-container ${this.fullWeeks()}`}>
       <h2>{`Week ${this.props.week}`}</h2>
       <button className='expand-collapse-button' onClick={() => this.expandToggle()}>
         <i className='fa fa-plus' aria-label='expand week results'></i>
