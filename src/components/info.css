@@ -54,6 +54,9 @@ li:before{
   .info h4{
     font-size: 17px;
   }
+  li{
+    margin-top: 10px;
+  }
   .info{
     width: 80%;
     padding: 10px;
