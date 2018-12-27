@@ -26,18 +26,15 @@ This is an app that allows users to make predictions about who will get eliminat
 
 ## Deployed App
 
-The deployed version of this app can be found [here](https://cryptic-bayou-79108.herokuapp.com/)
+The deployed version of this app can be found [here](https://bachelorette-fantasy-league.herokuapp.com/)
 
 Additionally, here is a link to the [server-side repository](https://github.com/thinkful-ei24/cameron-fullstack-capstone-server)
 
-## Demo Accounts
-There are two demo accounts:
-- To try out the selection process:
-  - username: demoSelection
-  - password: password123
-- To try out the results page, either submit guesses for the above or log in with this account
+## Demo Account
+- To try out the results page, log in with this account:
   - username: demoResults
-  - password: password123  
+  - password: password123 
+- To try out the selection process, you'll need to create a new account.   
 
 ## App Screenshots
 **Login Page:**
