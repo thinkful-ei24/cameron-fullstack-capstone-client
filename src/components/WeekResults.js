@@ -26,16 +26,16 @@ export default class WeekResults extends React.Component{
   render(){
     if(this.state.expanded){
       return(
-        <div className='week-results'>
+        <section className='week-results'>
           <ResultsHeader week={this.props.week} button='-' onClick={() => this.expandToggle()}/>
-          <div className='results-container'>{this.renderReact()}</div>  
-        </div>
+          <article className='results-container'>{this.renderReact()}</article>  
+        </section>
       )
     }
     return (
-      <div className='week-results' >
+      <section className='week-results' >
         <ResultsHeader week={this.props.week} button='+' onClick={() => this.expandToggle()}/>
-      </div>
+      </section>
     )
   }
 }

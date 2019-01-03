@@ -6,14 +6,14 @@ import './single-selection.css';
 
 export function SingleSelection(props){
   return (
-    <div className='single-selection'>
+    <article className='single-selection'>
       <button 
         className='delete-button' 
         onClick={() => props.dispatch(deleteSelection(props.contestant, props.week))}>
         <i className="fa fa-times-circle" aria-label='delete selection'></i>
       </button>
       <h3>{props.contestant}</h3>
-    </div>
+    </article>
   )
 }
 

@@ -36,18 +36,18 @@ export class WeekSelection extends React.Component{
   render(){
     if(this.state.expanded){
       return (
-        <div className={`week-selection-container ${this.fullWeeks()}`}>
-          <div className='week-header'>
+        <section className={`week-selection-container ${this.fullWeeks()}`}>
+          <header className='week-header'>
             <h2>{`Week ${this.props.week}`}</h2>
             <button className='expand-collapse-button' onClick={() => this.expandToggle()}>
               <i className="fa fa-minus" aria-label='collapse week'></i>
             </button>
-          </div>
-          <div className='selection-container'>
+          </header>
+          <article className='selection-container'>
             {this.renderReact()}
             <Selections week={this.props.week} />
-          </div>
-        </div>
+          </article>
+        </section>
       )
     }
     return (

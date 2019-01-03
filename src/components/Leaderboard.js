@@ -50,16 +50,16 @@ export class Leaderboard extends React.Component {
     if (!this.props.leaderboard) {
       return (
         <main role='main'>
-          <div>Sorry, leaderboard results are not available at this time</div>
+          <section>Sorry, leaderboard results are not available at this time</section>
           <Link to='/results' >Back to your results</Link>
         </main>)
     }
     return (
       <main role='main'>
         <Link className='link' to='/results' >Back to your results</Link>
-        <div className='leaderboard'>
+        <section className='leaderboard'>
           {this.renderReact()}
-        </div>
+        </section>
       </main>
     );
   }

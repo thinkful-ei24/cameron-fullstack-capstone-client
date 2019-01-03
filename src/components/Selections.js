@@ -13,9 +13,9 @@ export class Selections extends React.Component{
   }
   render(){
     return(
-      <div className='selection'>
+      <section className='selection'>
         {this.renderReact()}
-      </div>
+      </section>
     )
   }
 }
