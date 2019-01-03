@@ -9,6 +9,7 @@ import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 import ResultsHolder from './ResultsHolder';
 import Header from './Header';
+import LandingPage from './LandingPage';
 import SubmissionConfrim from './SubmissionConfirm';
 import {refreshAuthToken} from '../actions/auth-actions';
 import Leaderboard from './Leaderboard';
@@ -58,7 +59,7 @@ export class App extends React.Component {
       <div className='app'>
         <Header />
         <Route exact path='/signup' component={SignUpForm} />
-        <Route exact path='/' component={LoginForm} />
+        <Route exact path='/' component={LandingPage} />
         <Route exact path='/selection' component={WeekHolder} />
         <Route exact path='/results' component={ResultsHolder} />
         <Route exact path='/submissionconfirmed' component={SubmissionConfrim} />

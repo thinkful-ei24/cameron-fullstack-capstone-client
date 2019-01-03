@@ -56,7 +56,6 @@ export class SignUpForm extends React.Component {
       return <Redirect to='/selection' />;
     }
     return (
-      <main role='main'>
         <form className='signup-form' onSubmit={(e) => this.handleSubmit(e)}>
           {this.errorDisplay()}
           <label htmlFor='username'>Username:</label>
@@ -67,8 +66,6 @@ export class SignUpForm extends React.Component {
             onChange={e => this.customValidity(this.password)} />
           <button className='submit-user' type='submit'>Sign Up</button>
         </form>
-        <div>Already have an account? <Link className='link' to='/'>Log in now!</Link></div>
-      </main>
     )
   }
 

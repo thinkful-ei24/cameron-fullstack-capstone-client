@@ -1,0 +1,81 @@
+.landing-page{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+    "form"
+    "info";
+  align-items: center;
+  justify-items: center;
+}
+
+.less-info h2{
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.switchSignUp{
+  border: none;
+  color: rgba(171, 48, 48, 1);
+  font-family: 'Kodchasan', sans-serif;
+}
+
+.switchSignUp:hover{
+  color: black;
+}
+
+.switchSignUp:focus{
+  outline: none;
+}
+
+.form-class{
+  grid-area: form;
+  border: 2px solid black;
+  box-shadow: 8px 8px 6px -6px black;
+  width: 75%;
+}
+
+.less-info{
+  border: 2px solid black;
+  box-shadow: 8px 8px 6px -6px black;
+  padding: 10px 5px;
+  width: 95%;
+  margin-right: auto;
+  margin-left: auto;
+  grid-area: info;
+}
+
+.less-info h3{
+  font-size: 12px;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 640px){
+  .landing-page{
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "info form"
+  }
+  .less-info h2{
+    font-size: 30px;
+  }
+
+  .less-info h3{
+    font-size: 20px;
+  }
+
+  .less-info{
+    width: 80%;
+    padding: 10px;
+  }
+
+  .switchSignUp{
+    font-size: 18px;
+  }
+
+  .form-class{
+    width: 80%;
+  }
+}
