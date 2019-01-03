@@ -1,5 +1,5 @@
 .info h2{
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 5px;
   margin-bottom: 10px;
 }
@@ -16,7 +16,7 @@
 }
 
 .info h3{
-  font-size: 12px;
+  font-size: 15px;
   text-align: left;
   margin-bottom: 10px;
 }
@@ -24,16 +24,18 @@
 .info h4{
   text-align: left;
   font-weight: bold;
-  font-size: 10px;
+  font-size: 15px;
 }
 .instructions{
   border: 1px solid black;
   margin: 5px;
   text-align: left;
+
 }
 
 li{
   margin: 5px;
+  font-size: 15px;
 }
 
 li:before{
@@ -56,6 +58,7 @@ li:before{
   }
   li{
     margin-top: 10px;
+    font-size: 17px;
   }
   .info{
     width: 80%;

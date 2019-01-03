@@ -7,6 +7,7 @@
 .results-container{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  font-size: 18px;
 }
 
 .week-results:nth-child(even) h2{

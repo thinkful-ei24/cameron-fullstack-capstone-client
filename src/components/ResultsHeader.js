@@ -7,9 +7,9 @@ export class ResultsHeader extends React.Component{
   setScore(){
     const score = this.props.scores[this.props.week-1];
     if((score && score > 1) || score === 0){
-      return <span>{score} points</span>;
+      return <span className='points'>{score} points</span>;
     }else if(score === 1){
-      return <span>{score} point</span>;
+      return <span className='points'>{score} point</span>;
     }
   }
 

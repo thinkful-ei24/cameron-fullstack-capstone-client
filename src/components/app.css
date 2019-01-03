@@ -1,6 +1,7 @@
 .link{
   color: rgba(171, 48, 48, 1);
   text-decoration: none;
+  font-size: 15px;
 }
 
 .link:hover{
@@ -9,7 +10,7 @@
 
 h2{
   font-family: 'Marck Script', cursive;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
 }
 
@@ -40,7 +41,7 @@ body{
 
 @media only screen and (min-width: 640px){
   h2{
-    font-size: 25px;
+    font-size: 28px;
   }
   body{
     font-size: 17px;
